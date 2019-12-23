@@ -1,0 +1,136 @@
+Date:-20/12/2019
+
+1.WAQ to find unique deptid from emploee_info table?
+>>select distinct deptId from employee_info;
+ 
+2.WAQTD Unique deptid as well as designation?
+>>select distinct deptId , Designation from employee_info;
+ 
+3. WAQTD all the records of employees who designation is Software Developer ?
+>>select * from Employee_info where Designation='Software Developer';
+ 
+4.WAQTD employees name ,mobileNo who is salary >15000?
+>>select name ,mobileNo from Employee_info
+    -> where Salary>15000;
+ 
+5.WAQTD all the records of employees who is salary >25000?
+>>select * from Employee_info
+    -> where Salary<=25000;
+6.WAQTD all the records of employees except who is working as tester?
+>>select * from Employee_info
+    -> where Designation <> 'Tester';
+
+7.WAQTD increamented salary by 5000?
+>>select Salary+5000 as Salary from Employee_info;
+
+8.WAQTD annual salary?
+>>select Salary*12 as annualSalary from Employee_info;
+
+9.WAQTD all the record of the employees who is working as a software developer in depatment no 10? 
+>>select * from Employee_info
+    -> where Designation='Software Developer'and deptId=10;
+
+10.WAQTD whose job designation is tester and hired after 2015?
+>>select * from Employee_info
+    -> where Designation='Tester'and Doj>'2015-12-31';
+
+11.WAQTD manager who is working in department no 30 if salary >35000?
+>>select * from Employee_info
+    -> where Designation='Manager' and deptIde=30 and Salary>35000;
+
+12.WAQTD all the record of the employee who is working in deptid=20 or job designation is hr?
+>>select * from Employee_info
+    -> where Designation='HR' or deptId=20;
+
+13.WAQTD all the employee records whose DOB<1995 and the bloodgroup can be o+?
+>>select * from Employee_info
+    -> where DOB<'1995-01-01'or BloodGroup='O+';
+
+14.WAQTD name,email-id whose is working as tester or analyst or developer?
+select name, emailId from Employee_info
+    -> where Designation='Tester' or Designation='Software Developer' or Designation='Analysist';
+
+15.WAQTD all the records except analyst?
+>>select * from Employee_info
+    -> where not Designation='HR';
+
+16.WAQTD all the records of the employees who are not working in deptno=10,20,30?
+>>select * from Employee_info
+    -> where deptIde <> 10 and deptIde<>20 and deptIde<>30;
+
+17. WAQTD all the employees excluding tester who is working in department no=40?
+>>select * from Employee_info
+    -> where not (Designation='Tester' and deptIde=40);
+
+18.WAQTD all the records of the employees who are  working in deptno=10,20,30?
+>>select * from Employee_info
+    -> where deptIde in(10,20,30);
+
+19.WAQTD all the records of the employees who are  working as Software Developer,clerk or Tester?
+select * from Employee_info
+    -> where Designation in('Software Developer','clerk','Tester');
+
+20.WAQTD the details of developer,salaesman,tester,manager who are working in department number 10,30 or 40 and salary>15000? 
+>>select * from Employee_info
+    -> where Designation in('Software Developer','HR','salaesman','manager')and deptIde in(10,20,40)and salary>15000;
+
+21.WAQTD All the records of employees excluding the one who is working as hr and tester?
+>>select * from Employee_info
+    -> where Designation not in('Tester','HR');
+
+22.WAQTD all the details of the employees who are working in deptid 20,30 excluding the one who are working as analyst,hr,tester?
+>>select * from Employee_info
+    -> where deptIde in(20,30) and Designation not in('analyst','HR','Tester');
+
+23.WAQTD all the record of employee whose salary range is 20000 to 250000?
+>>select * from Employee_info
+    -> where  Salary between 20000 and 25000;
+
+24.WAQTD the name and age of employee whose age range is 20 to 30?
+>> select name from employee_info
+    -> where age between 20 and 30;
+
+25.WAQTD all the details of the employees who are joining in 2015?
+>>select * from employee_info
+    -> where doj between '2015-01-01' and '2015-12-31';
+
+26.WAQTD all the details of the employees who are salary in between 15000 and 30000?
+>> select * from employee_info
+    -> where Salary not between 15000 and 30000;
+
+27.WAQTD all the details of the employees who  DOB are null? 
+>>select * from Employee_info
+    -> where DOB is null;
+
+28.WAQTD all the details of the employees who  DOB are not null?
+>> select * from Employee_info
+    -> where DOB is not null;
+
+29.WAQTD all the details of the employees whose name starts with S?
+>> select * from Employee_info
+    -> where name like 'S%';
+
+30.WAQTD employees name and emailid ?
+>>select name emailId from Employee_info;
+   
+
+31.WAQTD all the details of the employees whose name contains atleast one L?
+>>select * from Employee_info
+    -> where name like '%l%';
+
+32.WAQTD all the details of the employees whose name contains starts with A and ends with Z?
+select * from Employee_info
+    -> where name like 'A%Z';
+
+33.WAQTD all the details of the employees whose name contains second letter is P?
+>>select * from Employee_info
+    -> where name like '_p%';
+
+34.WAQTD all the details of the employees whose name contains atleast four letter?
+>> select * from Employee_info
+    -> where name like '___%';
+
+35.WAQTD all the details of the employees whose emailId contains com? 
+>>select * from Employee_info
+    -> where emailId like '%com%';
+ 

@@ -1,0 +1,213 @@
+Date:-23/12/2019
+
+
+              multirow Function
+01.
+>> select  avg (Salary) from Employee_info;
+02.
+>>select  max(salary) from Employee_info;
+03.
+>>select  min(Salary) from Employee_info;
+04.
+>>select  sum(salary) from Employee_info;
+05.
+>>select  count(salary) from Employee_info;
+
+
+                   Singlerow Function
+06.
+>>select  upper(name) from Employee_info;
+07.
+>>select  lower(name) from Employee_info;
+08.
+>> select  length(name) from Employee_info;
+09.
+>>select  concat(name,emailId) from Employee_info;
+10.
+>>select  reverse(name) from Employee_info;
+                   Substr
+11.
+>>select substr(name,1,5) from Employee_info;
+
+                    instr
+12.
+>>select instr(name,'kuma') from Employee_info;
+>>select instr('Sonu Kumar patel','kumar') from Student;
+                    Table Creation
+13.
+>>.create table Department (deptId int(10) primary key,dname varchar(150),location varchar(200));
+
+                            inserting data into the table
+
+14.
+>>insert into Department values(10,'admin','bbsr');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into Department values(20,'HR','blr');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into Department values(30,'saler','up');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into Department values(40,'Operation','puna');
+Query OK, 1 row affected (0.06 sec)
+
+15.
+>>truncate table  Department;
+16.
+>>.insert into Department values(10,'admin','bbsr'),(20,'HR','blr'),(30,'saler','up'),(40,'Operation','puna');
+
+
+                                    Update table data
+17.
+>>update Department set location='pune'
+    -> where deptid=40;
+
+                                     Order by
+18.
+>>select salary from employee_info
+    -> order by salary desc;
+19.
+>>select count(location) from department group by location;
+                                      
+                                     Group By
+
+20.
+>>select * from Employee_info where salary<30000
+    -> group by deptId;
+                                  
+                                     having
+
+21.
+>>select * from Employee_info where salary<30000
+    -> group by deptId having count(deptId);
+22.
+>>insert into Employee_info values(112,'Subrata pradhan',7878784554,'subrata45@gmail.com','1998-05-05','Tester',32000,20,'2012-05-08','O+','male',23);
+                                              
+
+                                    DTL(Data Transection Language)
+
+23.how to set autocommit false;
+>>set autocommit=0;
+
+24.Inset a row(data) into Department table.
+>>insert into Department values(50,'Tester','andh');
+
+25.
+>>select * from Department;
++--------+-----------+----------+
+| deptId | dname     | location |
++--------+-----------+----------+
+|     10 | admin     | bbsr     |
+|     20 | HR        | blr      |
+|     30 | saler     | up       |
+|     40 | Operation | pune     |
+|     50 | Tester    | andh     |
++--------+-----------+----------+
+
+26.How to rollback ?
+>>rollback;
+
+27.select * from Department;
++--------+-----------+----------+
+| deptId | dname     | location |
++--------+-----------+----------+
+|     10 | admin     | bbsr     |
+|     20 | HR        | blr      |
+|     30 | saler     | up       |
+|     40 | Operation | pune     |
++--------+-----------+----------+
+
+28.
+>>insert into Department values(50,'Tester','andhra');
+
+29.
+>>select * from Department;
++--------+-----------+----------+
+| deptId | dname     | location |
++--------+-----------+----------+
+|     10 | admin     | bbsr     |
+|     20 | HR        | blr      |
+|     30 | saler     | up       |
+|     40 | Operation | pune     |
+|     50 | Tester    | andhra   |
++--------+-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> select * from Department;
++--------+-----------+----------+
+| deptId | dname     | location |
++--------+-----------+----------+
+|     10 | admin     | bbsr     |
+|     20 | HR        | blr      |
+|     30 | saler     | up       |
+|     40 | Operation | pune     |
++--------+-----------+----------+
+
+30.
+>>set autocommit=1;
+                            Savepoint                                     
+
+31.
+>>set autocommit=0;
+
+>>savepoint A;
+>>insert into Department values(50,'Tester','andhra');
+>>savepoint B;
+>>update Department set location='Bhubaneswar'
+    -> where deptId=10;
+>> select * from Department;
++--------+-----------+-------------+
+| deptId | dname     | location    |
++--------+-----------+-------------+
+|     10 | admin     | Bhubaneswar |
+|     20 | HR        | blr         |
+|     30 | saler     | up          |
+|     40 | Operation | pune        |
+|     50 | Tester    | andhra      |
++--------+-----------+-------------+
+>>rollback to B;
++--------+-----------+----------+
+| deptId | dname     | location |
++--------+-----------+----------+
+|     10 | admin     | bbsr     |
+|     20 | HR        | blr      |
+|     30 | saler     | up       |
+|     40 | Operation | pune     |
+|     50 | Tester    | andhra   |
++--------+-----------+----------+
+>>rollback to A;
++--------+-----------+----------+
+| deptId | dname     | location |
++--------+-----------+----------+
+|     10 | admin     | bbsr     |
+|     20 | HR        | blr      |
+|     30 | saler     | up       |
+|     40 | Operation | pune     |
++--------+-----------+----------+
+
+                            join(SQLyog)
+
+32.
+>>select * from employee_info cross join department;
+
+33.
+>>select * from employee_info inner join department on employee_info.deptId=department.deptId;
+34.
+>>select employee_info.name,employee_info.deptId,department.deptId
+ from  employee_info inner join department on employee_info.deptId=department.deptId;
+
+35.
+>>select * from employee_info natural join department;
+
+36.
+>>select * from employee_info  left outer join department on employee_info.deptId=department.deptId;
+
+37.
+>>select * from employee_info  right outer join department on employee_info.deptId=department.deptId;
+
+38.
+>>select * from department t1 self join department t2 on t1.deptId=t2.deptId;

@@ -1,0 +1,209 @@
+ Date:-19/12/2019
+
+1.show databases;
+ 2.create database bcits;
+ 3.show databases;
+ 4.use bcits;
+ 5.create table Student(stdid int(5) primary key,stdname varchar(20) not null,stdmarks double ,
+    -> stdage int(5),mobileno int(14),adress varchar(150));
+ 6. desc Student;
+ 7.insert into Student values(1,'sonu kumar',77.66,22,7752042,'Odisha');
++-------+------------+----------+--------+----------+--------+
+| stdid | stdname    | stdmarks | stdage | mobileno | adress |
++-------+------------+----------+--------+----------+--------+
+|     1 | sonu kumar |    77.66 |     22 |  7752042 | Odisha |
++-------+------------+----------+--------+----------+--------+
+ 8.select * from Student;
+ 9.insert into Student values(2,'Rohit',55.33,21,7753892,'Sundargharh');
+ 10.insert into Student values(3,'Ramanda',88.33,23,8989892,'Sonpur');
+ 11.insert into Student values(4,'Abhilash',49.33,20,8988522,'Sonpur');
+ 12.insert into Student values(45,'Rakash',90.33,25,8988522,'Rkl');
+ 13.insert into Student values(455,'Paban',97.23,25,8988522,'chathisagarh');
+ 14.select * from Student;
+ 15.alter table Student
+    -> add stdgender varchar(50);
+ 16.select * from Student;
+ 17. alter table Student
+    -> modify stdage double(8,2);
+ 18. select * from Student;
+ 19.delete from Student
+    -> where                                           
+    -> stdid=45;
+ 20.update Student
+    -> set stdgender='M';
+ 21.select * from student;
+ 22.
+   Q-Retrive all Student inf. whose having more then 80 marks
+ select * from Student
+    -> where stdmarks>80;
++-------+---------+----------+--------+----------+--------------+-----------+
+| stdid | stdname | stdmarks | stdage | mobileno | adress       | stdgender |
++-------+---------+----------+--------+----------+--------------+-----------+
+|     3 | Ramanda |    88.33 |  23.00 |  8989892 | Sonpur       | M         |
+|   455 | Paban   |    97.23 |  25.00 |  8988522 | chathisagarh | M         |
++-------+---------+----------+--------+----------+--------------+-----------+
+23.alter table Student drop stdgender;
+select * from Student;
++-------+------------+----------+--------+----------+--------------+
+| stdid | sname      | stdmarks | stdage | mobileno | adress       |
++-------+------------+----------+--------+----------+--------------+
+|     1 | sonu kumar |    77.66 |  22.00 |  7752042 | Odisha       |
+|     2 | Rohit      |    55.33 |  21.00 |  7753892 | Sundargharh  |
+|     3 | Ramanda    |    88.33 |  23.00 |  8989892 | Sonpur       |
+|     4 | Abhilash   |    49.33 |  20.00 |  8988522 | Sonpur       |
+|   455 | Paban      |    97.23 |  25.00 |  8988522 | chathisagarh |
++-------+------------+----------+--------+----------+--------------+
+24.alter table Student change stdage age int(5);
++-------+------------+----------+------+----------+--------------+
+| stdid | sname      | stdmarks | age  | mobileno | adress       |
++-------+------------+----------+------+----------+--------------+
+|     1 | sonu kumar |    77.66 |   22 |  7752042 | Odisha       |
+|     2 | Rohit      |    55.33 |   21 |  7753892 | Sundargharh  |
+|     3 | Ramanda    |    88.33 |   23 |  8989892 | Sonpur       |
+|     4 | Abhilash   |    49.33 |   20 |  8988522 | Sonpur       |
+|   455 | Paban      |    97.23 |   25 |  8988522 | chathisagarh |
++-------+------------+----------+------+----------+--------------+
+25.create database Atr;
+26.show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| atr                |
+| bcits              |
+| elf_employee_db    |
+| employee_db        |
+| flipkart           |
+| hotel_db           |
+| musicplayer        |
+| mysql              |
+| newschema          |
+| performance_schema |
+| student            |
+| sys                |
+| user               |
++--------------------+
+27.drop database atr;
+28.truncate table Student_info;
+    select * from Student_info;
+Empty set (0.00 sec)
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| bcits              |
+| elf_employee_db    |
+| employee_db        |
+| flipkart           |
+| hotel_db           |
+| musicplayer        |
+| mysql              |
+| newschema          |
+| performance_schema |
+| student            |
+| sys                |
+| user               |
++--------------------+
+29.rename table Student to Std_Info;
+30.create database ert;
+31rename database ert to ptr;
+show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| bcits              |
+| elf_employee_db    |
+| employee_db        |
+| ert                |
+| flipkart           |
+| hotel_db           |
+| musicplayer        |
+| mysql              |
+| newschema          |
+| performance_schema |
+| student            |
+| sys                |
+| user               |
++--------------------+ 
+32.rename table std_info to Student;
+Query OK, 0 rows affected (0.13 sec) 
+                                                                                                                                  
+33.select sname from Student;
++------------+
+| sname      |
++------------+
+| sonu kumar |
+| Rohit      |
+| Ramanda    |
+| Abhilash   |
+| Paban      |
++------------  
+34.select distinct adress from Student;
++--------------+
+| adress       |
++--------------+
+| Odisha       |
+| Sundargharh  |
+| Sonpur       |
+| chathisagarh |
++--------------+
+35. select distinct adress,mobileno from Student;
++--------------+----------+
+| adress       | mobileno |
++--------------+----------+
+| Odisha       |  7752042 |
+| Sundargharh  |  7753892 |
+| Sonpur       |  8989892 |
+| Sonpur       |  8988522 |
+| chathisagarh |  8988522 |
++--------------+----------+
+36.select adress as location from Student location;
++--------------+
+| location     |
++--------------+
+| Odisha       |
+| Sundargharh  |
+| Sonpur       |
+| Sonpur       |
+| chathisagarh |
++--------------+
+select * from Student;
++-------+------------+----------+------+----------+--------------+
+| stdid | sname      | stdmarks | age  | mobileno | adress       |
++-------+------------+----------+------+----------+--------------+
+|     1 | sonu kumar |    77.66 |   22 |  7752042 | Odisha       |
+|     2 | Rohit      |    55.33 |   21 |  7753892 | Sundargharh  |
+|     3 | Ramanda    |    88.33 |   23 |  8989892 | Sonpur       |
+|     4 | Abhilash   |    49.33 |   20 |  8988522 | Sonpur       |
+|   455 | Paban      |    97.23 |   25 |  8988522 | chathisagarh |
++-------+------------+----------+------+----------+--------------+
+37.select stdmarks+10 from Student;
++-------------+
+| stdmarks+10 |
++-------------+
+|       87.66 |
+|       65.33 |
+|       98.33 |
+|       59.33 |
+|      107.23 |
++-------------+,
+38. create table Employee_info(eid int(5) primary key,
+    -> name varchar(150),
+    -> mobileNo bigint(20) not null,
+    -> emailId varchar(150),
+    -> DOB date,
+    -> Designation varchar(150),
+    -> Salary double(8,2),
+    -> deptId int(50),
+    -> Doj date,
+    -> BloodGroup varchar(40),
+    -> Gender varchar(40));
+ 39. 
+  >> insert table Employee_info values(101,'sonu kumar',7752042777,'sonuku12@gmail.com','1980-02-10','Software Developer',30000.00,10,'2010-10-10','O+','male',39);
+  >>insert table Employee_info values(102,'Rohith kumar',9438713948,'rohita2@gmail.com','1998-02-10','HR',30000.00,10,'2012-10-10','B+','male',21);
+  >>insert table Employee_info values(103,'Sunita Patel',8052759418,'sunita22@gmail.com','1980-08-10','Manager',30000.00,20,'2012-11-11','B+','female',22);
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+
+
