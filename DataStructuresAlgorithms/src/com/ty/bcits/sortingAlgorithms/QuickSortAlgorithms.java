@@ -3,7 +3,7 @@ package com.ty.bcits.sortingAlgorithms;
 import java.time.Duration;
 import java.time.Instant;
 
-public class QuickSortAnalysis {
+public class QuickSortAlgorithms {
 	public static void quickSort(int []a,int l,int h) {
 		int pivot = a[(l+h)/2];
 		int i=l;
