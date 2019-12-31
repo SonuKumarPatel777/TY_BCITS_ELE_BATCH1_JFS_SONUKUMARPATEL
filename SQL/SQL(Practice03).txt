@@ -1,0 +1,287 @@
+Date:-28/12/2019
+
+create database Employee_managment_info;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use Employee_managment_info;
+Database changed
+mysql> create table Employee_primary_info(empId int primary key,
+    -> name varchar(150),
+    -> mobileno long
+    -> ,offical_mailId varchar(150),
+    -> Date_Of_Birth date,
+    -> Date_Of_Joining date,
+    -> Designation varchar(150),
+    -> Blood_Group varchar(10),
+    -> Salary double,
+    -> DeptId int,
+    -> ManagerId int);
+Query OK, 0 rows affected (0.41 sec)
+
+mysql> desc Employee_Primary_info;
+
+ create table Employee_Secondary_info(empId int primary key,
+    -> Personal_mailId varchar(150),
+    -> Gender varchar(150),
+    -> Age int,
+    -> Nationality varchar(150),
+    -> Ismarried varchar(150),
+    -> Gov_ID varchar(150),
+    -> Gurdian_name varchar(150),
+    -> Gurdian_contact_no long,
+    -> Job_Location varchar(150));
+Query OK, 0 rows affected (0.44 sec)
+
+mysql> desc Employee_Secondary_info;
+
+
+ create table Department_info(deptId int primary key,
+    -> Deptname varchar(150),
+    -> Dept_managerId int);
+
+mysql> desc department_info;
+
+
+create table Employee_Bank_info(empId int primary key,
+    -> Accountno long,
+    -> Bank_name varchar(150),
+    -> Branchname varchar(150),
+    -> IFSC_Code varchar(150));
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> desc Employee_Bank_info;
+
+mysql> create table Employee_Address_info(empId int,
+    -> Address_type varchar(150),
+    -> Houseno int,
+    -> Address1 varchar(150),
+    -> Address2 varchar(150),
+    -> Landmark varchar(150),
+    -> City varchar(150),
+    -> Pincode long,
+    -> primary key(empId,Address_type));
+
+
+
+mysql> create table Employee_Education_info(empId int,
+    -> Education_type varchar(150),
+    -> College_name varchar(150),
+    -> YOP date,
+    -> Stream varchar(150),
+    -> Percentage double,
+    -> University_name varchar(150),
+    -> primary key(empId,Education_type));
+Query OK, 0 rows affected (0.39 sec)
+
+mysql> create table Project_info(ProjId int Primary key,
+    -> proj_name varchar(150),
+    -> Technology varchar(150),
+    -> Startdate date,
+    -> enddate date,
+    -> location varchar(150));
+Query OK, 0 rows affected (0.33 sec)
+
+
+mysql> create table Employee_Project_info(empId int,
+    -> project_Id int,
+    -> primary key(empId,project_Id));
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> insert into Employee_Primary_info values(101,'Sonu kumar',7752042777,'sonukumar12@gmail.com','1988-12-12','2015-12-10','cleark','O+',32000,10,1001);
+Query OK, 1 row affected (0.22 sec)
+
+mysql> insert into Employee_Primary_info values(102,'Basanta kumar',5287456187,'basantakumar10@gmail.com','1987-10-10','2014-12-10','HR','O+',45000,20,1002);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into Employee_Primary_info values(103,'Jayanti Patel',8895527423,'jayantipatel11@gmail.com','1988-11-11','2014-11-12','Tester','B+',25000,30,1003);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into Employee_Primary_info values(104,'Monalisha Patel',9040679106,'monalishapatel111@gmail.com','1995-10-11','2014-11-12','Tester','B+',25000,30,1003);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into Employee_Primary_info values(105,'Swagat sahoo',8895524456,'sahooswagat@gmail.com','1996-11-10','2017-12-12','HR','O-',45000,20,1002);
+Query OK, 1 row affected (0.06 sec)
+
+mysql>  insert into Employee_Primary_info values(107,'Rohit Pani',8856237106,'panirohit@gmail.com','1990-11-11','2008-11-12','Developer','B+',41000,40,1004);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into Employee_Primary_info values(108,'Sumit kumar Naik',8854444106,'kumarsumit44@gmail.com','1990-10-10','2008-10-10','Developer','O+',41000,40,1004);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into Employee_Primary_info values(109,'Sunita Patel',8856237108,'Sunitapatel@gmail.com','1998-10-10','2018-11-12','HR','B+',45000,30,1002);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into Employee_Primary_info values(110,'Debendra Patel',9438712208,'debendrapatel@gmail.com','1999-10-10','2019-10-11','HR','O+',45000,40,1002);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into Employee_Primary_info values(111,'Deepak Dilla',9438712222,'deepakbhaidilla@gmail.com','1991-11-11','2010-11-11','developer','O+',50000,40,1004);
+Query OK, 1 row affected (0.11 sec)
+
+
+mysql> select * from Employee_Primary_info;
+
++-------+------------------+------------+-----------------------------+---------------+-----------------+-------------+-------------+--------+--------+-----------+
+| empId | name             | mobileno   | offical_mailId              | Date_Of_Birth | Date_Of_Joining | Designation | Blood_Group | Salary | DeptId | ManagerId |
++-------+------------------+------------+-----------------------------+---------------+-----------------+-------------+-------------+--------+--------+-----------+
+|   101 | Sonu kumar       | 7752042777 | sonukumar12@gmail.com       | 1988-12-12    | 2015-12-10      | cleark      | O+          |  32000 |     10 |      1001 |
+|   102 | Basanta kumar    | 5287456187 | basantakumar10@gmail.com    | 1987-10-10    | 2014-12-10      | HR          | O+          |  45000 |     20 |      1002 |
+|   103 | Jayanti Patel    | 8895527423 | jayantipatel11@gmail.com    | 1988-11-11    | 2014-11-12      | Tester      | B+          |  25000 |     30 |      1003 |
+|   104 | Monalisha Patel  | 9040679106 | monalishapatel111@gmail.com | 1995-10-11    | 2014-11-12      | Tester      | B+          |  25000 |     30 |      1003 |
+|   105 | Swagat sahoo     | 8895524456 | sahooswagat@gmail.com       | 1996-11-10    | 2017-12-12      | HR          | O-          |  45000 |     20 |      1002 |
+|   107 | Rohit Pani       | 8856237106 | panirohit@gmail.com         | 1990-11-11    | 2008-11-12      | Developer   | B+          |  41000 |     40 |      1004 |
+|   108 | Sumit kumar Naik | 8854444106 | kumarsumit44@gmail.com      | 1990-10-10    | 2008-10-10      | Developer   | O+          |  41000 |     40 |      1004 |
+|   109 | Sunita Patel     | 8856237108 | Sunitapatel@gmail.com       | 1998-10-10    | 2018-11-12      | HR          | B+          |  45000 |     30 |      1002 |
+|   110 | Debendra Patel   | 9438712208 | debendrapatel@gmail.com     | 1999-10-10    | 2019-10-11      | HR          | O+          |  45000 |     40 |      1002 |
+|   111 | Deepak Dilla     | 9438712222 | deepakbhaidilla@gmail.com   | 1991-11-11    | 2010-11-11      | developer   | O+          |  50000 |     40 |      1004 |
++-------+------------------+------------+-----------------------------+---------------+-----------------+-------------+-------------+--------+--------+-----------+
+
+ 
+          30/12/2019
+
+
+mysql> insert into Employee_Secondary_info (empId,Personal_mailId,Gender,Age,Nationality,Ismarried,Gov_ID,Gurdian_name,Gurdian_contact_no,Job_Location)
+    -> values(101,'kumarpatel@gmail.com','male',31,'Indian','NO','DL','kapil',7782456780,'Banglore');
+    -> (102,'basantakumar@gmail.com','male',32,'Indian','yes','PanCard','Deepa',7777785420,'Banglore'),
+    -> (103,'jayantipatel@gmail.com','female',31,'Indian','yes','PanCard','Deepa',7777785420,'Banglore'),
+    -> (104,'patelmona@gmail.com','female',24,'Indian','no','AdharCard','Sumit',8855996633,'Cuttack'),
+    -> (105,'sahooswagat@gmail.com','male',23,'Indian','NO','DL','sonu',7752042777,'Bhubaneswar'),
+    -> (107,'abhilashnaik@gmail.com','male',29,'Indian','NO','Adharcard','rahul',7752364178,'Sundargarh'),
+    -> (108,'panirohita@gmail.com','male',29,'Indian','NO','Passport','Rakesh',7725225178,'Banglore'),
+    -> (109,'patelsunita@gmail.com','female',21,'Indian','NO','Adharcard','sonu',708358023,'Banglore'),
+    -> (110,'debendra@gmail.com','male',20,'Indian','NO','Adharcard','Bimal',7752458798,'Sundargarh'),
+    -> (111,'dilladeepak@gmail.com','male',28,'Indian','Yes','Passport','Hemanta',99777565178,'Bhubaneswar');
+
+
+mysql> select * from Employee_Secondary_info;
+
++-------+------------------------+--------+------+-------------+-----------+-----------+--------------+--------------------+--------------+
+| empId | Personal_mailId        | Gender | Age  | Nationality | Ismarried | Gov_ID    | Gurdian_name | Gurdian_contact_no | Job_Location |
++-------+------------------------+--------+------+-------------+-----------+-----------+--------------+--------------------+--------------+
+|   101 | kumarpatel@gmail.com   | male   |   31 | Indian      | NO        | DL        | kapil        | 7782456780         | Banglore     |
+|   102 | basantakumar@gmail.com | male   |   32 | Indian      | yes       | PanCard   | Deepa        | 7777785420         | Banglore     |
+|   103 | jayantipatel@gmail.com | female |   31 | Indian      | yes       | PanCard   | Deepa        | 7777785420         | Banglore     |
+|   104 | patelmona@gmail.com    | female |   24 | Indian      | no        | AdharCard | Sumit        | 8855996633         | Cuttack      |
+|   105 | sahooswagat@gmail.com  | male   |   23 | Indian      | NO        | DL        | sonu         | 7752042777         | Bhubaneswar  |
+|   107 | abhilashnaik@gmail.com | male   |   29 | Indian      | NO        | Adharcard | rahul        | 7752364178         | Sundargarh   |
+|   108 | panirohita@gmail.com   | male   |   29 | Indian      | NO        | Passport  | Rakesh       | 7725225178         | Banglore     |
+|   109 | patelsunita@gmail.com  | female |   21 | Indian      | NO        | Adharcard | sonu         | 708358023          | Banglore     |
+|   110 | debendra@gmail.com     | male   |   20 | Indian      | NO        | Adharcard | Bimal        | 7752458798         | Sundargarh   |
+|   111 | dilladeepak@gmail.com  | male   |   28 | Indian      | Yes       | Passport  | Hemanta      | 99777565178        | Bhubaneswar  |
++-------+------------------------+--------+------+-------------+-----------+-----------+--------------+--------------------+--------------+
+
+
+
+ 
+
+mysql> insert into Department_info (deptID,deptname,Dept_managerId)
+    -> values(10,'cleark','1001'),
+    -> (20,'HR',1002),
+    -> (30,'Tester',1003),
+    -> (40,'developer',1004);
+
+update Department_info
+    -> set deptname='Testing'
+    -> where deptID=30;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> update Department_info
+    -> set deptname='Development'
+    -> where deptID=40;
+
+mysql> select * from Department_info;
+
++--------+-------------+----------------+
+| deptId | Deptname    | Dept_managerId |
++--------+-------------+----------------+
+|     10 | cleark      |           1001 |
+|     20 | HR          |           1002 |
+|     30 | Testing     |           1003 |
+|     40 | Development |           1004 |
++--------+-------------+----------------+
+
+
+
+
+mysql> insert into Employee_bank_info (empId,Accountno,Bank_name,Branchname,IFSC_Code)
+    -> values(101,14411285697,'SBI','Lephripara','SBIN0000458'),
+    -> (102,14411118527,'SBI','Lephripara','SBIN0000458'),
+    -> (103,88995118527,'HDFC','Charch Stree','HDFC0001751'),
+    -> (104,14478562487,'SBI','Lephripara','SBIN0000458'),
+    -> (105,789411118527,'ICICI','Inner Circle','ICIC0000007'),
+    -> (107,87774578961,'PUNB','Bhubaneswar','PUNB0089400'),
+    -> (108,87774578999,'PUNB','Bhubaneswar','PUNB0089400'),
+    -> (109,78941117894,'ICICI','Inner Circle','ICIC0000007'),
+    -> (110,14478777487,'SBI','Lephripara','SBIN0000458'),
+    -> (111,88777148522,'HDFC','Charch Stree','HDFC0001751');
+
+mysql> select * from Employee_bank_info;
+
++-------+--------------+-----------+--------------+-------------+
+| empId | Accountno    | Bank_name | Branchname   | IFSC_Code   |
++-------+--------------+-----------+--------------+-------------+
+|   101 | 14411285697  | SBI       | Lephripara   | SBIN0000458 |
+|   102 | 14411118527  | SBI       | Lephripara   | SBIN0000458 |
+|   103 | 88995118527  | HDFC      | Charch Stree | HDFC0001751 |
+|   104 | 14478562487  | SBI       | Lephripara   | SBIN0000458 |
+|   105 | 789411118527 | ICICI     | Inner Circle | ICIC0000007 |
+|   107 | 87774578961  | PUNB      | Bhubaneswar  | PUNB0089400 |
+|   108 | 87774578999  | PUNB      | Bhubaneswar  | PUNB0089400 |
+|   109 | 78941117894  | ICICI     | Inner Circle | ICIC0000007 |
+|   110 | 14478777487  | SBI       | Lephripara   | SBIN0000458 |
+|   111 | 88777148522  | HDFC      | Charch Stree | HDFC0001751 |
++-------+--------------+-----------+--------------+-------------+
+
+
+
+
+
+
+
+                  31/12/2019
+
+mysql> insert into Employee_Address_info(empId,Address_type,Houseno,Address1,Address2,Landmark,City,Pincode)
+    -> values(101,'current','49','MG road','D_building','bangalore','bangalore',673636),
+    -> (101,'permanent','89','School road','Dumabahal','Lephripara','Sundargarh',770012);
+    -> (102,'current','303','Old Airpot road','SNSPG','Murgeshpally','bangalore',670056),
+    -> (102,'permanent','43','NG Ground','NG SChool road','Sungargerh','Sungargerh',770458),
+    -> (103,'current','121','DVD road','srinivasnagar','4th cross','bangalore',673633),
+    -> (103,'Permanent','121','DVD road','srinivasnagar','4th cross','bangalore',673633),
+    -> (104,'current','111','TR road','manipal','16A','bangalore',673686),
+    -> (104,'permanent','89','lila road','lila road','sec45','Sambalpur',770006),
+    -> (105,'current','111','TR road','manipal','16A','bangalore',673686),
+    -> (105,'permanent','84','GM college','Budharaja','sec78','Sambalpur',770006),
+    -> (107,'current','784','VR road','srinivasnagar','45B','bangalore',673633),
+    -> (107,'permanent','784','VR road','srinivasnagar','45B','bangalore',673633),
+    -> (108,'current','784','TVR road','Ashoknagar','14c','bangalore',673633),
+    -> (108,'Permanent','03','Rammandir road','Iter college','L3','bhubaneswar',770016),
+    -> (109,'current','144','Old Airpot road','SNSPG','Murgeshpally','bangalore',670056),
+    -> (109,'permanent','10','BS School','Dumabahal','Lephripara','Sundargarh',770012),
+    -> (110,'current','108','SQ road ','Thiruvambady','kerala','kerala',673555),
+    -> (110,'permanent','46','Puranabasti','LN Colle','Jharsuguda','Jharsuguda',770054),
+    -> (111,'current','888','AC road','Delta building','basavanagudi','bangalore',673633),
+    -> (111,'permanent','06','newpada','Hirakud','L18','Sambalpur',673633);
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
