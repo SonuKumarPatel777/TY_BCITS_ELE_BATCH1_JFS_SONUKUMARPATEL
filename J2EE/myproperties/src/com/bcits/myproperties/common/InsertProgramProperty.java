@@ -1,35 +1,43 @@
-package com.bcits.jdbcapp.common;
+package com.bcits.myproperties.common;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.Properties;
 
-import com.mysql.jdbc.Driver;
-
-public class FindEmployee {
-
+public class InsertProgramProperty {
 	public static void main(String[] args) {
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
+		FileInputStream inputStream = null;
+		
 		try {
+			inputStream = new FileInputStream("dbinfo.properties");
+			Properties properties = new Properties();
+			properties.load(inputStream);
+			String drive = properties.getProperty("diveNm");
 			// 1. Load the "Driver"
 			/*
-			 * Driver driverRef = new Driver(); 
-			 * DriverManager.registerDriver(driverRef);
+			 * Driver driverRef = new Driver(); DriverManager.registerDriver(driverRef);
 			 */
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName(drive).newInstance();
 			// 2. Get the "DB connection" via "Driver"
-			//String dbUrl = "jdbc:mysql://localhost:3306/Employee_managment_info?user=root&password=root";
-			String dbUrl = "jdbc:mysql://localhost:3306/Employee_managment_info?";
-			//con = DriverManager.getConnection(dbUrl);
-			con = DriverManager.getConnection(dbUrl,"root","root");
+			// String dbUrl =
+			// "jdbc:mysql://localhost:3306/Employee_managment_info?user=root&password=root";
+			// String dbUrl = "jdbc:mysql://localhost:3306/Employee_managment_info?";
+			// con = DriverManager.getConnection(dbUrl);
+			con = DriverManager.getConnection(properties.getProperty("dbURl"), properties.getProperty("user"),
+					properties.getProperty("password"));
+			
 			// 3.Issue "SQL Queries" via "Connection"
-			String query = " select * from Employee_primary_info"
-					       + " where empId=101 ";
+			String query = " select * from Employee_primary_info" + " where empId=101 ";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 			// 4."Process the Results" returned by "SQL Quries"
@@ -62,7 +70,7 @@ public class FindEmployee {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			//Close all the JDBC objects
+			// Close all the JDBC objects
 			try {
 				if (con != null) {
 					con.close();
@@ -77,8 +85,8 @@ public class FindEmployee {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}//End of inner try-catch block
-		}//End of finally
-	}//End of main
+			} // End of inner try-catch block
+		} // End of finally
+	}// End of main
 
-}//End of Class
+}
