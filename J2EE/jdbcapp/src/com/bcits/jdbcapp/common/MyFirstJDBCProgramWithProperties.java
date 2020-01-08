@@ -24,9 +24,9 @@ public class MyFirstJDBCProgramWithProperties {
 			// 2. Get the "DB connection" via "Driver"
 			String dbUrl = "jdbc:mysql://localhost:3306/Employee_managment_info";
 			
-			FileInputStream fil = new FileInputStream("db.properties");
+			FileInputStream fileInputStream = new FileInputStream("db.properties");
 			Properties porp= new Properties();
-			porp.load(fil);
+			porp.load(fileInputStream);
 			
 			con = DriverManager.getConnection(dbUrl,porp);
 			// 3.Issue "SQL Queries" via "Connection"
@@ -49,15 +49,15 @@ public class MyFirstJDBCProgramWithProperties {
 
 				System.out.println("Employee ID====>" + employeeID);
 				System.out.println("Employee name==>" + employeeNM);
-				System.out.println("employeeMbNo====>" + employeeMbNo);
-				System.out.println("employeeoffical_mailId====>" + employeeoffical_mailId);
-				System.out.println("employee Date_Of_Birth====>" + Date_Of_Birth);
-				System.out.println("Date_Of_joining===>" + Date_Of_joining);
-				System.out.println("Employee_Designation===>" + Employee_Designation);
-				System.out.println("Employee_Blood_Group===>" + Employee_Blood_Group);
-				System.out.println("employeeSalary===>" + employeeSalary);
-				System.out.println("employee_DeptId====>" + employee_DeptId);
-				System.out.println("employee_ManagerId====>" + employee_ManagerId);
+				System.out.println("Employee MbNo====>" + employeeMbNo);
+				System.out.println("Employee offical_mail====>"+employeeoffical_mailId);
+				System.out.println("Employee Date_Of_Birth====>" + Date_Of_Birth);
+				System.out.println("Employee Date_Of_joining===>" + Date_Of_joining);
+				System.out.println("Employee Designation===>" + Employee_Designation);
+				System.out.println("Employee Blood_Group===>" + Employee_Blood_Group);
+				System.out.println("Employee Salary===>" + employeeSalary);
+				System.out.println("Employee DeptId====>" + employee_DeptId);
+				System.out.println("Employee ManagerId====>" + employee_ManagerId);
 				System.out.println("******************************************");
 
 			}

@@ -21,13 +21,14 @@ public class MyFirstJDBCProgram {
 			Driver driverRef = new Driver();
 			DriverManager.registerDriver(driverRef);
 			// 2. Get the "DB connection" via "Driver"
-			String dbUrl = "jdbc:mysql://localhost:3306/Employee_managment_info?user=root&password=root";
+			String dbUrl = "jdbc:mysql://localhost:3306/Employee_managment_info?"
+					       + "user=root&password=root";
 			con = DriverManager.getConnection(dbUrl);
 			// 3.Issue "SQL Queries" via "Connection"
 			String query = "select * from Employee_primary_info";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
-			// 4."Process the Results" returned by "SQL Quries"
+			// 4."Process the Results" returned by "SQL Queries"
 			while (rs.next()) {
 				int employeeID = rs.getInt("empId");
 				String employeeNM = rs.getString("name");
@@ -58,7 +59,7 @@ public class MyFirstJDBCProgram {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			// 5."Close All the JDBC Objects"
 			try {
 				if (con != null) {
@@ -73,7 +74,7 @@ public class MyFirstJDBCProgram {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} // end of inner try-catch block
-		}
+		} 
 
 	}// End of main
 }// End of Class

@@ -2,38 +2,32 @@ package com.bcits.jdbcapp.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Date;
 
-import com.mysql.jdbc.Driver;
-
-public class FindEmployee {
-
+public class PreparedStatementExample {
 	public static void main(String[] args) {
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
+		Connection con= null;
+		PreparedStatement pstmt= null;
+		ResultSet rs= null;
 		try {
-			// 1. Load the "Driver"
-			/*
-			 * Driver driverRef = new Driver(); 
-			 * DriverManager.registerDriver(driverRef);
-			 */
+			// 1.Load the Driver
+
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			// 2. Get the "DB connection" via "Driver"
-			//String dbUrl = "jdbc:mysql://localhost:3306/Employee_managment_info?user=root&password=root";
-			String dbUrl = "jdbc:mysql://localhost:3306/Employee_managment_info?";
-			//con = DriverManager.getConnection(dbUrl);
-			con = DriverManager.getConnection(dbUrl,"root","root");
-			// 3.Issue "SQL Queries" via "Connection"
-			String query = " select * from Employee_primary_info"
-					       + " where empId=101 ";
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(query);
+			//Get the DB Connection via Driver
+			String dbUrl = "jdbc:mysql://localhost:3306/Employee_managment_info";
+			 con = DriverManager.getConnection(dbUrl, "root", "root");
+			//3.Issue the Queries via Connection
+			String query=" select * from Employee_Primary_info "
+					     + "where empId=? ";
+			 pstmt = con.prepareStatement(query);
+			pstmt.setInt( 1, Integer.parseInt(args[0]));
+		    rs = pstmt.executeQuery();
+			
 			// 4."Process the Results" returned by "SQL Queries"
-			while (rs.next()) {
+			if (rs.next()) {
 				int employee_id = rs.getInt("empId");
 				String employee_name = rs.getString("name");
 				Long employee_Mb_No = rs.getLong("mobileno");
@@ -56,9 +50,11 @@ public class FindEmployee {
 				System.out.println("Employee_Blood_Group====>" + Employee_Blood_Group);
 				System.out.println("employeeSalary=====>" + employeeSalary);
 				System.out.println("employee_DeptId=====>" + employee_DeptId);
-				System.out.println("employee_ManagerId====>" + employee_ManagerId);
-
+				System.out.println("employee_ManagerId====>" + employee_ManagerId); 
+			}else {
+				System.err.println(" Employee Data Not Found in DB !!!");
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -68,8 +64,8 @@ public class FindEmployee {
 					con.close();
 				}
 
-				if (stmt != null) {
-					stmt.close();
+				if (pstmt != null) {
+					pstmt.close();
 				}
 
 				if (rs != null) {
@@ -77,8 +73,7 @@ public class FindEmployee {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}//End of inner try-catch block
-		}//End of finally
-	}//End of main
-
-}//End of Class
+			}
+		}//End of inner try-catch block
+	}// End of Main
+}// End of Class
