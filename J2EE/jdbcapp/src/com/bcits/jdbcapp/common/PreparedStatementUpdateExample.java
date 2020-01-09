@@ -2,13 +2,14 @@ package com.bcits.jdbcapp.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-public class MyFirstJDBCProgramUpdate {
+public class PreparedStatementUpdateExample {
+	
 	public static void main(String[] args) {
 		Connection con = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		try {
 			// Load the Driver
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -16,10 +17,11 @@ public class MyFirstJDBCProgramUpdate {
 			String str = "jdbc:mysql://localhost:3306/Employee_managment_info?"
 			+ "user=root&password=root";
 			con = DriverManager.getConnection(str);
-			String qu = "update Employee_primary_info set name="
-			+ "'Sambrant Nayak' where empid=114";
-			stmt = con.createStatement();
-			int noRow = stmt.executeUpdate(qu);
+			String query = " update Employee_primary_info set name= "
+					+ " 'Sambrant Nayak' where empId=? ";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt( 1, Integer.parseInt(args[0]));
+			int noRow = pstmt.executeUpdate();
 			System.out.println(noRow + " row update");
 
 		} catch (Exception e) {
@@ -34,9 +36,9 @@ public class MyFirstJDBCProgramUpdate {
 					e.printStackTrace();
 				}
 			}
-			if (stmt != null) {
+			if (pstmt != null) {
 				try {
-					stmt.close();
+					pstmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -46,4 +48,5 @@ public class MyFirstJDBCProgramUpdate {
 
 	}// End of Method
 
-}// End of Class
+
+}//End of Class

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MyFirstJDBCProgramUpdate {
+public class MyFirstJDBCProgramDelete {
 	public static void main(String[] args) {
 		Connection con = null;
 		Statement stmt = null;
@@ -16,8 +16,7 @@ public class MyFirstJDBCProgramUpdate {
 			String str = "jdbc:mysql://localhost:3306/Employee_managment_info?"
 			+ "user=root&password=root";
 			con = DriverManager.getConnection(str);
-			String qu = "update Employee_primary_info set name="
-			+ "'Sambrant Nayak' where empid=114";
+			String qu = "delete from Employee_primary_info where empid=112";
 			stmt = con.createStatement();
 			int noRow = stmt.executeUpdate(qu);
 			System.out.println(noRow + " row update");
@@ -46,4 +45,4 @@ public class MyFirstJDBCProgramUpdate {
 
 	}// End of Method
 
-}// End of Class
+}//End of Class

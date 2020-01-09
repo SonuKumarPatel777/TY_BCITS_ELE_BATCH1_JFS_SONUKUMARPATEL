@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MyFirstJDBCProgramUpdate {
+public class Demo {
 	public static void main(String[] args) {
 		Connection con = null;
 		Statement stmt = null;
@@ -13,11 +13,10 @@ public class MyFirstJDBCProgramUpdate {
 			// Load the Driver
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			// get the connection via Driver
-			String str = "jdbc:mysql://localhost:3306/Employee_managment_info?"
+			String str = "jdbc:mysql://localhost:3306/Demo?"
 			+ "user=root&password=root";
 			con = DriverManager.getConnection(str);
-			String qu = "update Employee_primary_info set name="
-			+ "'Sambrant Nayak' where empid=114";
+			String qu =  "alter table demo_table add address1 varchar(300)";
 			stmt = con.createStatement();
 			int noRow = stmt.executeUpdate(qu);
 			System.out.println(noRow + " row update");
@@ -46,4 +45,4 @@ public class MyFirstJDBCProgramUpdate {
 
 	}// End of Method
 
-}// End of Class
+}
