@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import com.bcits.jpawithhibernateapp2.bean.EmployeeInfo;
+import com.bcits.jpawithhibernateapp2.bean.EmployeePrimaryInfo;
 
 public class UpdateEmployee {
 	public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class UpdateEmployee {
 			manager= entityManagerFactor.createEntityManager();
 			 transaction= manager.getTransaction();
 			 transaction.begin();
-			 EmployeeInfo info=manager.find(EmployeeInfo.class, 101);
+			 EmployeePrimaryInfo info=manager.find(EmployeePrimaryInfo.class, 101);
 			 info.setEmployeeSalary(80000);
 			 transaction.commit();
 			 System.out.println("Record Update");

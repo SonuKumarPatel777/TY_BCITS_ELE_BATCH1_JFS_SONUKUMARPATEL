@@ -1,4 +1,4 @@
-package com.bcits.jpawithhibernateapp2.curd;
+package com.bcits.jpawithhibernateapp2.test;
 
 import java.sql.Date;
 
@@ -8,13 +8,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import com.bcits.jpawithhibernateapp2.bean.EmployeePrimaryInfo;
+import com.bcits.jpawithhibernateapp2.onetoone.EmployeeSecondaryInfo;
 
-public class InsertEmployee {
+public class TestOneToOne {
+
 	public static void main(String[] args) {
 		EntityManager manager = null;
 		EntityTransaction transation = null;
 		EmployeePrimaryInfo test = new EmployeePrimaryInfo();
-		test.setEmployeeId(121);
+		test.setEmployeeId(12);
 		test.setEmployeeName("Sunil");
 		test.setEmployeeofficalMailId("sunil141@gmail.com");
 		test.setEmployeeMbNo(9064567342l);
@@ -25,13 +27,26 @@ public class InsertEmployee {
 		test.setEmployeeSalary(54000);
 		test.setEmployeeDeptId(40);
 		test.setEmployeeManagerId(1002);
-
+		
+		EmployeeSecondaryInfo secondaryInfo = new EmployeeSecondaryInfo();
+		 
+		secondaryInfo.setPersonal_mailId("sunilbro@gmail.com");
+		secondaryInfo.setGender("Male");
+		secondaryInfo.setAge(24);
+		secondaryInfo.setNationality("Indian");
+		secondaryInfo.setIsmarried("No");
+		secondaryInfo.setGov_ID("PANCard");
+		secondaryInfo.setGurdian_name("deepa");
+		secondaryInfo.setGurdian_contact_no(7845129875l);
+		secondaryInfo.setJob_Location("Cuttack");
+		secondaryInfo.setPrimaryInfo(test);
+		
 		try {
 			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
 			manager = entityManagerFactory.createEntityManager();
 			transation = manager.getTransaction();
 			transation.begin();
-			manager.persist(test);
+			manager.persist(secondaryInfo);
 			System.out.println("Record save");
 			transation.commit();
 		} catch (Exception e) {
@@ -42,6 +57,7 @@ public class InsertEmployee {
 
 		}//End of Finally
 
-	}//End of main
-	
-}//End of Class
+     
+	}
+
+}

@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import com.bcits.jpawithhibernateapp2.bean.EmployeeInfo;
+import com.bcits.jpawithhibernateapp2.bean.EmployeePrimaryInfo;
 
 public class Reattached {
 	
@@ -17,11 +17,11 @@ public class Reattached {
 			manager =entityManagerFactory.createEntityManager();
 			 transaction = manager.getTransaction();
 			transaction.begin();
-			EmployeeInfo info=manager.find(EmployeeInfo.class, 121);
+			EmployeePrimaryInfo info=manager.find(EmployeePrimaryInfo.class, 121);
 			System.out.println(manager.contains(info));
 			manager.detach(info);
 			System.out.println(manager.contains(info));
-			EmployeeInfo reattached = manager.merge(info);
+			EmployeePrimaryInfo reattached = manager.merge(info);
 			reattached.setEmployeeDesignation("Software Developer");
 			transaction.commit();
 			System.out.println("record update");

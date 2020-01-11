@@ -1,34 +1,37 @@
-package com.bcits.jpawithhibernateapp2.curd;
+package com.bcits.jpawithhibernateapp2.jpql;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
-import com.bcits.jpawithhibernateapp2.bean.EmployeePrimaryInfo;
-
-public class DeleteEmployee {
-
+public class DynamicUpdateEmployee {
 	public static void main(String[] args) {
 		EntityManager manager = null;
 		EntityTransaction transaction = null;
-
 		try {
 			EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
 			manager = entityManagerFactory.createEntityManager();
 			transaction = manager.getTransaction();
 			transaction.begin();
-			EmployeePrimaryInfo info = manager.find(EmployeePrimaryInfo.class, 120);
-			manager.remove(info);
+			String jpql = " update EmployeeInfo set name=:nm where empId=:id";
+			Query query = manager.createQuery(jpql);
+			query.setParameter("id", 115);
+			query.setParameter("nm","Sonu kumar");
+			int count = query.executeUpdate();
+			
+			System.out.println("No of row affected" + count);
 			transaction.commit();
-			System.out.println("Record  Delete");
 		} catch (Exception e) {
 			e.printStackTrace();
 			transaction.rollback();
-		} finally {
+		}
+		finally {
 			manager.close();
 		}
+		
 
-	}
+	}// End The main
 
-}
+}//End of Class

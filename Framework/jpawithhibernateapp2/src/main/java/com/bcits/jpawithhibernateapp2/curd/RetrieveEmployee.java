@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.bcits.jpawithhibernateapp2.bean.EmployeeInfo;
+import com.bcits.jpawithhibernateapp2.bean.EmployeePrimaryInfo;
 
 public class RetrieveEmployee {
 
@@ -13,7 +13,7 @@ public class RetrieveEmployee {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
 		manager = entityManagerFactory.createEntityManager();
 //		EmloyeeInfo info = manager.find(EmloyeeInfo.class, 1011);
-		EmployeeInfo info = manager.getReference(EmployeeInfo.class, 1011);
+		EmployeePrimaryInfo info = manager.getReference(EmployeePrimaryInfo.class, 1011);
 		System.out.println(info.getEmployeeName());
 
 //		System.out.println(" Employee_ID---------" + info.getEmployeeId());
