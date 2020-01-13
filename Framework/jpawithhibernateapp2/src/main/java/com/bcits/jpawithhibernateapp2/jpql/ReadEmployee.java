@@ -18,7 +18,7 @@ public class ReadEmployee {
 		Query query = manager.createQuery(jpql);
 		List<EmployeePrimaryInfo> list = query.getResultList();
 		for (EmployeePrimaryInfo employeeInfo : list) {
-			System.out.println(" Employee_ID---------" + employeeInfo.getEmployeeId());
+			System.out.println(" Employee_ID---------" + employeeInfo.getEmpId());
 			System.out.println(" Employee_name-------" + employeeInfo.getEmployeeName());
 			System.out.println(" Employee_MobileNO---" + employeeInfo.getEmployeeMbNo());
 			System.out.println(" Employee_offical_mailId-------" + employeeInfo.getEmployeeofficalMailId());

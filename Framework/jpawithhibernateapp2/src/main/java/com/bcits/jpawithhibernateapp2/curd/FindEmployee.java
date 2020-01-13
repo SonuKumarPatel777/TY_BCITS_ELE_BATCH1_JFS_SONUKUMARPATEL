@@ -13,7 +13,7 @@ public class FindEmployee {
 		EmployeePrimaryInfo info = manager.find(EmployeePrimaryInfo.class, 101);
 		
 	
-		System.out.println(" Employee_ID---------"+info.getEmployeeId());
+		System.out.println(" Employee_ID---------"+info.getEmpId());
 		System.out.println(" Employee_name-------"+info.getEmployeeName());
 		System.out.println(" Employee_MobileNO---"+info.getEmployeeMbNo());
 		System.out.println(" Employee_offical_mailId-------"+info.
