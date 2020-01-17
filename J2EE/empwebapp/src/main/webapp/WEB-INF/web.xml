@@ -12,9 +12,17 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	<context-param>
+		<param-name>appName</param-name>
+		<param-value>empwebapp</param-value>
+	</context-param>
 	<servlet>
 		<servlet-name>currentDate</servlet-name>
 		<servlet-class>com.bcits.empwebapp.servlets.DateServlet</servlet-class>
+		<init-param>
+			<param-name>servletName</param-name>
+			<param-value>Date Servlet</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>currentDate</servlet-name>

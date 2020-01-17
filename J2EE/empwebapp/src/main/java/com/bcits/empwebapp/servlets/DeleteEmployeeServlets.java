@@ -5,18 +5,21 @@ import java.io.PrintWriter;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 import com.bcits.empwebapp.beans.EmployeePrimaryInfo;
 
-@WebServlet("/findEmployee")
-public class SearchEmployeeServlet2 extends HttpServlet {
+@WebServlet("/deleteEmployee")
+public class DeleteEmployeeServlets extends HttpServlet {
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// Get the Form data
@@ -27,26 +30,26 @@ public class SearchEmployeeServlet2 extends HttpServlet {
 		EntityManager manager = entityManagerFactory.createEntityManager();
 
 		EmployeePrimaryInfo employeePrimaryInfo = manager.find(EmployeePrimaryInfo.class, empId);
+		EntityTransaction transaction = manager.getTransaction();
+		Boolean isDelete = false;
+		try {
+			transaction.begin();
+			manager.remove(employeePrimaryInfo);
+			transaction.commit();
+			isDelete = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		// Generate Dynamic Response
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 
-		if (employeePrimaryInfo != null) {
-			// Display Employee record
+		if (isDelete) {
+			// Delete Employee record
 			out.println("<html>");
 			out.println("<body>");
-			out.println("<h1 style='color:green'>Employye ID " + empId + " Found!!!</h1><br>");
-			out.println("<br>Name=" + employeePrimaryInfo.getName());
-			out.println("<br>mobileNum=" + employeePrimaryInfo.getMobileNum());
-			out.println("<br>Offical_MailId=" + employeePrimaryInfo.getOfficalMailId());
-			out.println("<br>D.O.B.= " + employeePrimaryInfo.getDateOfBirth());
-			out.println("<br>D.O.J.= " + employeePrimaryInfo.getDateOfjoining());
-			out.println("<br>Designation=" + employeePrimaryInfo.getDesignation());
-			out.println("<br>Blood Group=" + employeePrimaryInfo.getBloodGroup());
-			out.println("<br>Salary= " + employeePrimaryInfo.getEmployeeSalary());
-			out.println("<br>Department  ID=" + employeePrimaryInfo.getDepartmentId());
-			out.println("<br>Manager ID=" + employeePrimaryInfo.getManagerId());
+			out.println("<h1 style='color:green'>Employye ID " + empId + " Delete <h1>");
 			out.println("</body>");
 			out.println("</html>");
 
@@ -64,4 +67,4 @@ public class SearchEmployeeServlet2 extends HttpServlet {
 
 	}// End of doGet()
 
-}// Eed Of Class
+}
