@@ -53,7 +53,7 @@ public class EmployeePrimaryInfo implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "primaryInfo1")
 	private List<EmployeeAdressInfo> adressInfos;
 	@Exclude
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "primaryInfo")
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "primaryInfoForProject")
 	private  List<ProjectInfo> prInfos;
 
 	 

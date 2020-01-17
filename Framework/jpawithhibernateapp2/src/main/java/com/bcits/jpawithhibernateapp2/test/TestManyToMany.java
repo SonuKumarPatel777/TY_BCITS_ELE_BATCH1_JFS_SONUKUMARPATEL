@@ -40,7 +40,7 @@ public class TestManyToMany {
 //		arrProjectInfos.add(pinf2);
 //		 
 		
-		test.setEmpId(130);
+		test.setEmpId(144);
 		test.setEmployeeName("Sarthak Sahoo");
 		test.setEmployeeofficalMailId("sarthasahoo02@gmail.com");
 		test.setEmployeeMbNo(9064511122l);
@@ -76,7 +76,7 @@ public class TestManyToMany {
 		pinf.setStartDate(Date.valueOf("2020-01-01") );
 		pinf.setEndDate(Date.valueOf("2022-01-01"));
 		pinf.setLocation("bangalore");
-		pinf.setPrimaryInfo(arrayList);
+		pinf.setPrimaryInfoForProject(arrayList);
 		 
 
 		try {
@@ -84,8 +84,8 @@ public class TestManyToMany {
 			manager = entityManagerFactory.createEntityManager();
 			transation = manager.getTransaction();
 			transation.begin();
-			 manager.persist(pinf);
-			System.out.println("Record Retrive");
+			manager.persist(pinf);
+			System.out.println("Record Save");
 			transation.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

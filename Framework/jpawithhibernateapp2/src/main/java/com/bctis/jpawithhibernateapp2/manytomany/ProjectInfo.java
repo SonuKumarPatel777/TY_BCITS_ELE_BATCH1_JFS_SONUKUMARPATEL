@@ -18,25 +18,25 @@ import com.bcits.jpawithhibernateapp2.bean.EmployeePrimaryInfo;
 import lombok.Data;
 @Data
 @Entity
-@Table
+@Table(name="project_info")
 public class ProjectInfo implements Serializable{
 	@Id
-	@Column 
+	@Column(name="ProjId")
 	private int pid;
-	@Column 
+	@Column(name="proj_name") 
 	private String projName;
-	@Column 
+	@Column(name="Technology") 
 	private String technology;
-	@Column 
+	@Column(name="Startdate") 
 	private Date startDate;
-	@Column 
+	@Column(name="enddate") 
 	private Date endDate;
-	@Column 
+	@Column(name="location") 
 	private String location;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable( name="employee_project_info", joinColumns =@JoinColumn(name="pid")
-	,inverseJoinColumns =@JoinColumn(name="emoId") )
-	private List<EmployeePrimaryInfo> primaryInfo;
+	@JoinTable( name="employee_project_infoo", joinColumns =@JoinColumn(name="pid")
+	,inverseJoinColumns =@JoinColumn(name="empId") )
+	private List<EmployeePrimaryInfo> primaryInfoForProject;
 
 }
