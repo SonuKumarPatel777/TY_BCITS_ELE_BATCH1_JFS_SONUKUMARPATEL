@@ -1,0 +1,77 @@
+.bg{
+    background:url('/image/ele3.jpg') ;
+    background-size:cover;
+     
+}
+#register{
+    border: 2px solid white;
+    margin-top: 90px;
+    padding: 60px 40px;
+    margin-bottom: 100px;
+    margin-left: 450px;
+}
+input[type="text"]{
+     height: 46px;
+     width: 178px;
+}
+input[type="text"][name="meternumber"]{
+    margin-top: 10px;
+    width: 546px;
+    height: 46px;
+}
+input[type="email"][name="email"]{
+    margin-top: 10px;
+    width: 545px;
+    height: 46px;  
+}
+input[type="tel"][name="mobilenumber"]{
+    margin-top: 10px;
+    width: 545px;
+    height: 46px;
+}
+select{
+    margin-top: 10px;
+    width: 270px;
+    height: 46px;
+}
+input[type="number"]{
+    margin-top: 10px;
+    width: 545px;
+    height: 46px;
+}
+input[type="text"][name="inputAddress1"]{
+    margin-top: 10px;
+    width: 545px;
+    height: 46px;
+}
+input[type="text"][name="inputAddress2"]{
+    margin-top: 10px;
+    width: 545px;
+    height: 46px;
+}
+input[type="text"][name="inputCity"]{
+    margin-top: 10px;
+    width: 545px;
+    height: 46px;
+}
+input[type="text"][name="inputZip"]{
+    margin-top: 10px;
+    width: 545px;
+    height: 46px;
+}
+input[type="password"][name="password"]{
+    margin-top: 10px;
+    width: 545px;
+    height: 46px;
+}
+button[type="submit"]{
+    margin-top: 10px;
+    width: 100px;
+    height: 46px;
+    margin-left: 150px;
+}
+button[type="reset"]{
+    margin-top: 10px;
+    width: 100px;
+    height: 46px;
+}

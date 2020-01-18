@@ -8,32 +8,35 @@
     <title>cusomer login</title>
     <link rel="stylesheet" href="/bootstrap-4.4.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/consumerOfficerlogin.css">
+    
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <img src="/image/images.png" alt="" style="width:189px; height:148px" id="logoimg">
-        </button>
-        <h2  style="color:white; margin-left: 150px;">Bangalore Electicity Supply Company Limited</h2><br>
-        <a href="/consumerlogin.html"style=" margin-left: 100px;"><input type="button"
-                value="Consumer Portal"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="/officerlogin.html"><input type="button" value="Employee Portal"></a>&nbsp;&nbsp;&nbsp;
-        <a href="/home.html"><input type="button" value="Home"></a>
-    </nav>
+    
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <img src="/image/images.png" alt="" style="width:189px; height:148px" id="logoimg">
+            </button>
+            <h2  style="color:white; margin-left: 150px;">Bangalore Electicity Supply Company Limited</h2><br>
+            <a href="/consumerlogin.html"style=" margin-left: 100px;"><input type="button"
+                    value="Consumer Portal"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/officerlogin.html"><input type="button" value="Employee Portal"></a>&nbsp;&nbsp;&nbsp;
+            <a href="/home.html"><input type="button" value="Home"></a>
+        </nav>
+    
     <div class="container-fluid bg">
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12"></div>
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <form action="" id="login">
-                    <h3>Employee Login</h3>
-                    <img class="img rounded-circle " src="/image/access-512.png">
+                    <h3>Consumer Login</h3>
+                    <img class="img rounded-circle " src="/image/login.png">
                     <div>
-                        <label>User ID/Name</label>
-                        <input type="text" class="form-control" placeholder=" Enter User ID/Name">
+                        <label>Meter Number</label>
+                        <input type="text" class="form-control" placeholder=" Enter Meter Number/RR Number" required>
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="password" class="form-control" placeholder=" Enter Password">
+                        <input type="password" class="form-control" placeholder=" Enter Password" required>
                     </div>
                     <div>
                         <label><input type="checkbox" name="checkbox">Remember me</label>
@@ -46,8 +49,8 @@
                         <button type="reset" class="btn btn-success">RESET</button>
                     </div>
                     <div><br>
-                        <p style="text-align: center;">Not a registered Officer ?</label>&nbsp;&nbsp;<a
-                                href="/officerRegister.html">Register</a>
+                        <p style="text-align: center;">Not a registered Consumer ?</label>&nbsp;&nbsp;<a
+                                href="/consumerRegister.html">Register</a>
                         </p>
                     </div>
                 </form>

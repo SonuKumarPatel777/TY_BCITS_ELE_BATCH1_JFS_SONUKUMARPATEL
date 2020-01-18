@@ -1,0 +1,26 @@
+.bg{
+    background:url('/image/ele3.jpg') ;
+    background-size:cover;
+}
+#register{
+    border: 2px solid white;
+    margin-top: 40px;
+    padding: 60px 40px;
+    margin-bottom: 100px;
+    margin-left: 495px;
+}
+input[type="text"]{
+    height: 46px;
+    width: 387px;
+    margin-top: 10px;
+}
+input[type="password"]{
+    height: 46px;
+    width: 387px;
+    margin-top: 10px;
+}
+select{
+    height: 46px;
+    width: 387px;
+    margin-top: 10px;
+}
