@@ -1,13 +1,11 @@
-package com.bcits.empwebapp.servlets;
+package com.bcits.empwebapp.servletforjsp;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bcits.empwebapp.beans.EmployeePrimaryInfo;
-
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
-
+@WebServlet("/login2")
+public class LoginServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -40,37 +36,17 @@ public class LoginServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		resp.setContentType("text/html");
-		PrintWriter out = resp.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		if (employeePrimaryInfo != null) {
-			// valid Credentials
-			// Create A Session
+		if(employeePrimaryInfo != null) {
+			//Valid Creadentials
+			HttpSession session = req.getSession(true);
+			session.setAttribute("loggedInEmpInfo", employeePrimaryInfo);
 			
-			HttpSession session = req.getSession(true);//Session starts
-
-			session.setMaxInactiveInterval(60);
-			session.setAttribute("employeePrimaryInfo", employeePrimaryInfo);
-
-			out.println("<h1 style='color:green;'>" + employeePrimaryInfo.getName()
-					+ " Welcome to Employee Home Page</h1>");
-
-			RequestDispatcher requestDispatcher = req.getRequestDispatcher("./employeeHome.html");
-			requestDispatcher.include(req, resp);
-		} else {
-			out.println("<h1>" + employeePrimaryInfo + " not found</h1>");
-			RequestDispatcher requestDispatcher = req.getRequestDispatcher("./loginForm.html");
-			requestDispatcher.include(req, resp);
-			
-			
-
+			req.getRequestDispatcher("./homePage.jsp").forward(req, resp);
+		}else {
+			//Invalid Creadentials
+			req.setAttribute("msg","Invalid Emplyee ID/ Password");
+			req.getRequestDispatcher("./loginForm.jsp").forward(req, resp);
 		}
-		out.println("</body>");
-		out.println("</html>");
-		manager.close();
-		entityManagerFactory.close();
+	}//End of doPost()
 
-	}// End of doPost()
-
-}// End Of Class
+}//End of Class
