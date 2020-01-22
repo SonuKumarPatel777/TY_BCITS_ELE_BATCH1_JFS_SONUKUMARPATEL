@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add to Employee Master</title>
+</head>
+<body>
+     <fieldset>
+		<legend>Employee Master</legend>
+		<form action="./addEmployeeMaster" method="post">
+			<table>
+			<tr>
+			   <td>First name</td>
+			   <td>:</td>
+			   <td><input type= "text" name="firstName" required></td>
+			</tr>
+			<tr>
+			   <td> Middle name</td>
+			   <td>:</td>
+			   <td><input type= "text" name="middleName" required></td>
+			</tr>
+			<tr>
+			   <td>Last Name</td>
+			   <td>:</td>
+			   <td><input type= "text" name="lastName" required></td>
+			</tr>
+			<tr>
+			   <td>Region</td>
+			   <td>:</td>
+			   <td> <select name="region">
+                        <option selected>select Region</option>
+                        <option>Bangalore North</option>
+                        <option>Bangalore South</option>
+                    </select></td>
+			</tr>
+			<tr>
+			   <td>designation</td>
+			   <td>:</td>
+			   <td><input type= "text" name="designation" required></td>
+			</tr>
+			<tr>
+			   <td>Employee ID</td>
+			   <td>:</td>
+			   <td><input type= "text" name="empId" required></td>
+			</tr>
+			<tr>
+			   <td> Re-Enter Employee ID</td>
+			   <td>:</td>
+			   <td><input type= "text" name="reempId" required></td>
+			</tr>
+			<tr>
+			   <td></td>
+			   <td><input type="submit" value="Add"></td>
+			   <td></td>
+			</tr>
+			
+			</table>
+		</form>
+	</fieldset>
+
+</body>
+</html>
