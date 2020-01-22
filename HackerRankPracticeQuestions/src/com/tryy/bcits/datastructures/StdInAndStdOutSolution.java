@@ -6,7 +6,7 @@ public class StdInAndStdOutSolution {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the Integer ");
+        System.out.println("Enter the Integer  ");
         int i = scan.nextInt();
         System.out.println("Enter the Double Valu");
         double d = scan.nextDouble();
