@@ -10,6 +10,12 @@ public class EmployeeBean {
 	private DepartmentBean departmentBean;
 
 	/*
+	 * public EmployeeBean(String name, int age, DepartmentBean departmentBean) {
+	 * super(); this.name = name; this.age = age; this.departmentBean =
+	 * departmentBean; }
+	 */
+
+	/*
 	 * public String getName() { return name; } public void setName(String name) {
 	 * this.name = name; } public int getAge() { return age; } public void
 	 * setAge(int age) { this.age = age; }

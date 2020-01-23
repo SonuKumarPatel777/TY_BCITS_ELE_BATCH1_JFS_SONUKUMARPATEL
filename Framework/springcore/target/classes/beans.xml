@@ -16,12 +16,15 @@
     <!--  <bean id = "employee" class="com.bcits.springcore.beans.EmployeeBean" >
     <property name="name" value="Sonu"/>
     <property name="age" value="22"/> 
-    </bean>
+    </bean>-->
     
-    <bean id = "employee2" class="com.bcits.springcore.beans.EmployeeBean" >
+    <!-- <bean id = "employee2" class="com.bcits.springcore.beans.EmployeeBean" >
     <property name="name" value="Rohit"/>
     <property name="age" value="23"/> 
-    </bean> -->
+    </bean> --> 
     
-    <bean id = "employee" class="com.bcits.springcore.beans.EmployeeBean" scope="prototype"></bean>
+    <!-- <bean id = "employee" class="com.bcits.springcore.beans.EmployeeBean" scope="prototype"></bean> -->
+    
+    
+    
 </beans>
