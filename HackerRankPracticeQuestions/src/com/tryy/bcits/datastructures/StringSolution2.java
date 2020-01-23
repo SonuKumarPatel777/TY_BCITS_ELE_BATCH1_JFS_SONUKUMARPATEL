@@ -24,4 +24,4 @@ public class StringSolution2 {
 
 	}
 
-}
+}//End the Class
