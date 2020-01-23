@@ -21,15 +21,16 @@ public class EmployeeMasterServlet extends HttpServlet{
 		 String regionVal = req.getParameter("region");
 		 String designationVal = req.getParameter("designation");
 		 String empIdVal = req.getParameter("empId");
-		 String reempIdVal = req.getParameter("reempId");
-		 
+		  
 		 String name=firstNameVal+" "+middleNameVal+" "+lastNameVal;
 		 
 		 //Set the Data
 		 EmployeeMaster employeeMaster = new EmployeeMaster();
-				
+		 employeeMaster.setName(name);
+		 employeeMaster.setRegion(regionVal);
+		 employeeMaster.setDesignation(designationVal);
+		 employeeMaster.setEmpId(empIdVal);
 	
-	 
 	 }
 
 }
