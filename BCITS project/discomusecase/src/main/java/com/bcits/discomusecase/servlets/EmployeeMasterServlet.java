@@ -29,7 +29,10 @@ public class EmployeeMasterServlet extends HttpServlet{
 		 employeeMaster.setName(name);
 		 employeeMaster.setRegion(regionVal);
 		 employeeMaster.setDesignation(designationVal);
-		 employeeMaster.setEmpId(empIdVal);
+		 employeeMaster.setEmpId(Integer.parseInt(empIdVal));
+		 
+		 //Send the Object
+		 req.setAttribute("employeeMaster", employeeMaster);
 	
 	 }
 

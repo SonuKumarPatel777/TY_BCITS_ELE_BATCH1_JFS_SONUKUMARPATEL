@@ -15,7 +15,7 @@ import lombok.Data;
 public class EmployeeMaster implements Serializable{
 	@Id
 	@Column(name="emp_Id")
-	private String empId;
+	private int empId;
 	
 	@Column
 	private String name;
