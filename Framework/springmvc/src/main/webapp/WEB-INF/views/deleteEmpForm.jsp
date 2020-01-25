@@ -12,17 +12,17 @@
 </head>
 <body>
 <fieldset>
-		<legend>DElete Employee</legend>
+		<legend>Delete Employee</legend>
 		<form action="./delete">
 			<label>Employee ID:</label>
 			 <input type="text" name="empId" required><br>
-			<input type="submit" value="Search">
+			<input type="submit" value="delete">
 		</form>
 	</fieldset>
-	<% if(msg != null && msg.isEmpty()) {%>
+	<% if(msg != null && !msg.isEmpty()) {%>
 	<h3 style="color:green"><%= msg %></h3>
 	<%} %>
-	<% if(errMsg != null && errMsg.isEmpty()) {%>
+	<% if(errMsg != null && !errMsg.isEmpty()) {%>
 	<h3 style="color:red"><%= errMsg %></h3>
 	<%} %>
 	

@@ -22,7 +22,7 @@
 			<input type="submit" value="Search">
 		</form>
 	</fieldset>
-	<% if(errMsg != null && errMsg.isEmpty()) {%>
+	<% if(errMsg != null && !errMsg.isEmpty()) {%>
 	<h3 style="color:red"><%= errMsg %></h3>
 	<%} %>
 	
