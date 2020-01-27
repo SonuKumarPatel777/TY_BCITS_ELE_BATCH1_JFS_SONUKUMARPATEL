@@ -11,10 +11,10 @@
  <thead>
     <tr style="background:lime;">
         <th/><a href="./searchEmpForm">Search Employee</a></th>
-        <th/><a href="#">Add Employee</a></th>
-        <th/><a href="#">Update Employee</a></th>
+        <th/><a href="./addEmpForm">Add Employee</a></th>
+        <th/><a href="./updateEmpForm">Update Employee</a></th>
         <th/><a href="./deleteEmpForm">Delete Employee</a></th>
-        <th/><a href="#">See All Employees</a></th>
+        <th/><a href="./seeAllEmployee">See All Employees</a></th>
     </tr>
  </thead>
 </table>

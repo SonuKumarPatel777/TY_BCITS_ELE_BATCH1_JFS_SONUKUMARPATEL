@@ -16,7 +16,7 @@ public class EmployeeInfoBean implements Serializable{
 	
 	@Id
 	@Column(name = "emp_id")
-	private int empId;
+	private Integer empId;
 	@Column
 	private String name;
 	@Column(name = "mobile")
@@ -32,11 +32,11 @@ public class EmployeeInfoBean implements Serializable{
 	@Column(name = "blood_Group")
 	private String bloodGroup;
 	@Column
-	private double employeeSalary;
+	private Double employeeSalary;
 	@Column(name = "department_id")
-	private int departmentId;
+	private Integer departmentId;
 	@Column(name = "manager_id")
-	private int managerId;
+	private Integer managerId;
 	@Column
 	private String password;
 

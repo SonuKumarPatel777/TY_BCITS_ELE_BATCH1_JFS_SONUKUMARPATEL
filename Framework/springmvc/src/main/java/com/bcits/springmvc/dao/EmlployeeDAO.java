@@ -12,7 +12,7 @@ public interface EmlployeeDAO {
 	public boolean deleteEmployee(int empId);
 	public boolean updateEmployee(EmployeeInfoBean employeeInfoBean);
 	public EmployeeInfoBean getEmployee(int empId);
-	public List<EmployeeInfoBean> getAll(EmployeeInfoBean employeeInfoBean);
+	public List<EmployeeInfoBean> getAllEmployee();
 	
 
 }

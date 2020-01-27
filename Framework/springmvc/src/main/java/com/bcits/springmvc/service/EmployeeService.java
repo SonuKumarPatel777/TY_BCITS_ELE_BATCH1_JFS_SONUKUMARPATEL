@@ -8,10 +8,10 @@ public interface EmployeeService {
 	
 public EmployeeInfoBean authenticate(int empId, String password);
 	
-	public boolean addEmployee(EmployeeInfoBean employeeInfoBean);
+	public boolean addEmployee(EmployeeInfoBean employeeInfoBean, String confpassword);
 	public boolean deleteEmployee(int empId);
 	public boolean updateEmployee(EmployeeInfoBean employeeInfoBean);
 	public EmployeeInfoBean getEmployee(int empId);
-	public List<EmployeeInfoBean> getAll(EmployeeInfoBean employeeInfoBean);
+	public List<EmployeeInfoBean> getAllEmployee();
 
 }//End of service 

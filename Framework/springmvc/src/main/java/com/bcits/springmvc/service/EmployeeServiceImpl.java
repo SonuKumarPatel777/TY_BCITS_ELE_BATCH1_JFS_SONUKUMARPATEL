@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bcits.springmvc.beans.EmployeeInfoBean;
+import com.bcits.springmvc.customexceptions.EmployeeException;
 import com.bcits.springmvc.dao.EmlployeeDAO;
 
 @Service
@@ -29,8 +30,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public boolean addEmployee(EmployeeInfoBean employeeInfoBean) {
-		return dao.addEmployee(employeeInfoBean);
+	public boolean addEmployee(EmployeeInfoBean employeeInfoBean,String confpassword) {
+		if(employeeInfoBean.getPassword().equals(confpassword)) {
+			return dao.addEmployee(employeeInfoBean);
+		}
+		return false;
 	}
 
 	@Override
@@ -40,12 +44,20 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public EmployeeInfoBean getEmployee(int empId) {
+		if(empId<1) {
+			throw new EmployeeException("Invlid Employee ID !!");
+		}
+		
+		EmployeeInfoBean employeeInfoBean = dao.getEmployee(empId);
+		if(employeeInfoBean == null) {
+			throw new EmployeeException(" Employee ID  Not Found!!");
+		}
 		return dao.getEmployee(empId);
 	}
 
 	@Override
-	public List<EmployeeInfoBean> getAll(EmployeeInfoBean employeeInfoBean) {
-		return dao.getAll(employeeInfoBean);
+	public List<EmployeeInfoBean> getAllEmployee() {
+		return dao.getAllEmployee();
 	}
 
 }
