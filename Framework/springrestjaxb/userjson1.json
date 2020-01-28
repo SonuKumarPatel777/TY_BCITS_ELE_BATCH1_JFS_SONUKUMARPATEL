@@ -1,0 +1,32 @@
+{
+	"employee-id": 101101,
+	"name": "sonu kumar",
+	"department-id": 45,
+	"mobileNum": 7845124578,
+	"officalMailId": "sonuku@gmail.com",
+	"dateOfBirth": 1580209748113,
+	"dateOfJoining": 1580209748113,
+	"designation": "SSD",
+	"bloodGroup": "O+",
+	"employeeSalary": 55000.0,
+	"password": "qweertyu",
+	"manager-id": 1002,
+	"user-other-info": {
+		"gender": "male",
+		"addharNumber": 1245784512457845
+	},
+	"user-adresses-list": [
+		{
+			"housnumber": 55,
+			"street": "WEQ street",
+			"city": "BBL",
+			"addressType": "t"
+		},
+		{
+			"housnumber": 58,
+			"street": "WEr street",
+			"city": "HYD",
+			"addressType": "p"
+		}
+	]
+}

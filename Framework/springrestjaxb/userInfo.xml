@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<user-info>
+    <employee-id>101101</employee-id>
+    <name>sonu kumar</name>
+    <mobileNum>7845124578</mobileNum>
+    <officalMailId>sonuku@gmail.com</officalMailId>
+    <dateOfBirth>2020-01-28T14:30:59.945+05:30</dateOfBirth>
+    <dateOfJoining>2020-01-28T14:30:59.945+05:30</dateOfJoining>
+    <designation>SSD</designation>
+    <bloodGroup>O+</bloodGroup>
+    <employeeSalary>55000.0</employeeSalary>
+    <department-id>45</department-id>
+    <manager-id>1002</manager-id>
+    <password>qweertyu</password>
+    <user-other-info>
+        <gender>male</gender>
+        <addhar>1245784512457845</addhar>
+    </user-other-info>
+    <user-adresses-list>
+        <house-number>55</house-number>
+        <street>WEQ street</street>
+        <city>BBL</city>
+        <addres-type>116</addres-type>
+    </user-adresses-list>
+    <user-adresses-list>
+        <house-number>58</house-number>
+        <street>WEr street</street>
+        <city>HYD</city>
+        <addres-type>112</addres-type>
+    </user-adresses-list>
+</user-info>
