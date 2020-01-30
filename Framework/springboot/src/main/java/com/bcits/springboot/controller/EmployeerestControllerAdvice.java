@@ -1,0 +1,24 @@
+package com.bcits.springboot.controller;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.bcits.springboot.beans.EmployeeResponse;
+import com.bcits.springboot.exception.EmployeeException;
+
+@RestControllerAdvice
+public class EmployeerestControllerAdvice {
+	
+	
+	@ExceptionHandler(EmployeeException.class)
+	public EmployeeResponse handlerEmployeeException(EmployeeException ex) {
+		EmployeeResponse response =new EmployeeResponse();
+		response.setStatusCode(501);
+		response.setMessage("exception");
+		response.setDescription(ex.getMessage());
+		
+		return response;
+		
+	}//end of handlerEmployeeException()
+
+}//end of class
