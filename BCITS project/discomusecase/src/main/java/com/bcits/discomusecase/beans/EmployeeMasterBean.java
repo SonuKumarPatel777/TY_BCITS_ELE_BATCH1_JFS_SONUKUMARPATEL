@@ -15,7 +15,7 @@ import lombok.Data;
 public class EmployeeMasterBean implements Serializable{
 	@Id
 	@Column(name="emp_id")
-	private int empId;
+	private int employeeId;
 	
 	@Column
 	private String name;
@@ -25,6 +25,9 @@ public class EmployeeMasterBean implements Serializable{
 	
 	@Column
 	private String designation;
+	
+	@Column
+	private String password;
 	
 
 }//End of Class

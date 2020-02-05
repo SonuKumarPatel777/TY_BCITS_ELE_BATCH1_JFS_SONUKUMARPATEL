@@ -31,7 +31,7 @@
                 <input type="text" name="name" id="" placeholder="Consumer Name*"><br>
                 <input type="text" name="meterNumber" id="" placeholder="Enter Meter Number/RR Number*"><br>  
                 <input type="email" name="email" id="" placeholder="Email Address">
-                <input type="tel" name="mobilenumber" id="" placeholder="Phone Number."><br>
+                <input type="tel" name="phoneNumber" id="" placeholder="Phone Number."><br>
                 <select name="region">
                     <option selected >select Region</option>
                     <option>Bangalore North</option>

@@ -27,10 +27,16 @@ public class CurrentBillBean implements Serializable{
 	private int consumption;
 	
 	@Column(name="bill_amount")
-	private double billAmount;
+	private Double billAmount;
 	
 	@Column(name="due_date")
 	private Date dueDate;
+	
+	@Column(name="consumer_type")
+	private String consumerType;
+	
+	@Column
+	private String status;
 	
 
 }//end of class

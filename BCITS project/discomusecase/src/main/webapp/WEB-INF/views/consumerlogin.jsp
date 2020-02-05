@@ -6,15 +6,15 @@
     <spring:url var="js" value="/resources/js"/>
     <spring:url var="images" value="/resources/images"/>
     <jsp:include page="header.jsp"/>
-    
- <% String msg = (String)request.getAttribute("msg"); %>
- <% if(msg != null && !msg.isEmpty()){ %>
- <h2 style="color:green"><%= msg %></h2>
- <%} %>
  
  <%String errMsg = (String)request.getAttribute("errMsg"); %>
  <% if(errMsg != null && !errMsg.isEmpty()){ %>
  <h2 style="color:red"><%= errMsg %></h2>
+ <%} %>
+ 
+ <%String msg = (String)request.getAttribute("msg"); %>
+ <% if(msg != null && !msg.isEmpty()){ %>
+ <h2 style="color:red"><%= msg %></h2>
  <%} %>
 <!DOCTYPE html>
 <head>
@@ -37,7 +37,7 @@
                     <h3>Consumer Login</h3>
                     <img class="img rounded-circle " src="${images}/login.png">
                     <div>
-                        <label>Meter Number</label>
+                        <label>User ID</label>
                         <input type="text" class="form-control" name="meterNumber" id="meterNum" placeholder=" Enter Meter Number/RR Number" >
                     </div>
                     <div>

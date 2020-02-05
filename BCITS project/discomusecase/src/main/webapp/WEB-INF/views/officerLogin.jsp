@@ -7,6 +7,7 @@
     <spring:url var="images" value="/resources/images"/>
     <jsp:include page="header.jsp"/>
 <!DOCTYPE html>
+ 
 <html lang="en">
 
 <head>
@@ -20,11 +21,15 @@
 </head>
 
 <body>
+  <%String errMsg = (String)request.getAttribute("errMsg"); %>
+  <% if(errMsg != null && !errMsg.isEmpty()){%>
+ <h2 style="color:red"><%= errMsg %></h2>
+ <%}%>
     <div class="container-fluid bg">
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12"></div>
             <div class="col-md-4 col-sm-4 col-xs-12">
-                <form action="" id="login">
+                <form action="./employeeLoginHome" id="login" method="post">
                     <h3>Employee Login</h3>
                     <img class="img rounded-circle " src="${images}/access-512.png">
                     <div>
@@ -32,8 +37,8 @@
                         <input type="text" class="form-control" name="employeeId" placeholder=" Enter Employee ID">
                     </div>
                     <div>
-                        <label>Designation</label>
-                        <input type="password" class="form-control" name="designation" placeholder=" Enter Designation">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" placeholder=" Enter password">
                     </div>
                     <div>
                         <label><input type="checkbox" name="checkbox">Remember me</label>
