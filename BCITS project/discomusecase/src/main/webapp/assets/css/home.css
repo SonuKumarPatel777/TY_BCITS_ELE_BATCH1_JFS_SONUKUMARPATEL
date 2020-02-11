@@ -1,0 +1,42 @@
+body{
+    background-image:url('../images/ele1.jpg'); 
+    background-position: center;
+    background-size: cover;
+ }
+img{
+    margin-top: -5px;
+    margin-left: -10px;
+    width: 112px;
+    height: 160px;
+}
+h2{
+    color:white; 
+    font-size: 37px;
+    padding-left: 197px;
+    margin-top: -73px; 
+}
+ h4{
+     color: blue;
+     font-size: 20px;
+     margin-top: 56px;   
+ }
+ h3{
+     color:blue;
+     font-size: 20px;
+     margin-top: 300px;
+     margin-left: 490px;
+ }
+ h1{
+    color: blue;
+    margin-top: 130px;
+    margin-left: 350px;
+    font-size: 60px;
+    
+ }
+ input[type="button"]{
+    font-size: 20px;
+    margin-top: 86px;
+    margin-left: -16pxpx;
+ }
+ 
+ 

@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+body{
+    background-image:  url(../images/ele3.jpg);
+    height:  100vh;
+    background-size: cover;
+    background-position: center;
+}
+h1{
+    color: blue;
+    margin-top: 400px;
+}
+table{
+	margin-top: 90px;
+	margin-left: 270px;
+    padding:10px;
+    font-size: 20px;
+} 
+ 
