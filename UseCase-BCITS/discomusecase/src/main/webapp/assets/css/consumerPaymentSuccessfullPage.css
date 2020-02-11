@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+    
+marquee {
+    background-image: url(../images/pay.jpg);
+    height:  100vh;
+    background-size: cover;
+    background-position: center;
+}
+}	
+ 

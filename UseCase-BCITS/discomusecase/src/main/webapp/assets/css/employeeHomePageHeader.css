@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+ul{
+    list-style-type: none;
+    float: right;
+    margin-top: 60px;
+    margin-right: 20px;
+}
+ul li {
+    display: inline-block;
+}
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    text-decoration: underline;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+}
+ul li a:hover{
+    background-color: rgb(16, 233, 81);
+    color:rgba(21, 22, 21, 0.904);
+    text-decoration: none;
+}
+ul li.active a{
+    background-color: rgb(16, 233, 81);
+    color:rgba(21, 22, 21, 0.904);
+}
+ 
+ 
