@@ -33,7 +33,7 @@
 	          <form action="./tarrifChange">
 	    		 <input name="typeOfConsumer" type="text" value="<%= tarrifMasterBean.getTarrifMasterPK().getTypeOfConsumer() %>" hidden="true">
 	    		 <input name="unitsRange" type="text" value="<%= tarrifMasterBean.getTarrifMasterPK().getUnitsRange() %>" hidden="true">
-	        <tr style="height:35px">
+	        <tr style="height:35px; background-color: navy; color: white'">
 	        <td><%= i %></td>
 	        <td><%= tarrifMasterBean.getTarrifMasterPK().getTypeOfConsumer() %></td>
 	        <td><%= tarrifMasterBean.getTarrifMasterPK().getUnitsRange() %></td>

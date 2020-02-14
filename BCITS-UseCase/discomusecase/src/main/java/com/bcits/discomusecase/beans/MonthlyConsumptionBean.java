@@ -20,6 +20,9 @@ public class MonthlyConsumptionBean {
 	@Column(name="previous_reading")
 	private int previousReading;
 	
+	@Column
+	private String region;
+	
 	@Column(name="current_reading")
 	private int currentReading;
 	

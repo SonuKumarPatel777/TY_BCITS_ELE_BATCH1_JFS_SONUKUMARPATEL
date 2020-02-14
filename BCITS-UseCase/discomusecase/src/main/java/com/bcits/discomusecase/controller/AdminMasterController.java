@@ -157,7 +157,7 @@ public class AdminMasterController {
 			modelMap.addAttribute("typeOfConsumer", typeOfConsumer);
 			modelMap.addAttribute("unitsRange", unitsRange);
 			modelMap.addAttribute("mulitplayerAmount", mulitplayerAmount);
-			return "TarrifChangePage";
+			return "tarrifChangePage";
 		} else {
 			modelMap.addAttribute("errMsg", "Please Login First..");
 			return "adminLogin";
@@ -166,7 +166,7 @@ public class AdminMasterController {
 
 	@PostMapping("/setTheTarrif")
 	public String tarrifChange(HttpSession session, ModelMap modelMap,
-			String typeOfConsumer,int unitsRange,int mulitplayerAmount) {
+			String typeOfConsumer, int unitsRange, int mulitplayerAmount) {
 		AdminMasterBean adminMasterBean = (AdminMasterBean) session.getAttribute("loggedInAdmin");
 		if (adminMasterBean != null) {
 			if (service.tarrifChanged( typeOfConsumer, unitsRange, mulitplayerAmount)) {

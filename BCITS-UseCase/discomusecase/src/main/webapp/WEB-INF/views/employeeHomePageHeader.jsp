@@ -24,8 +24,8 @@
                 <li><a href="./employeeDetail">My Details</a></li>
                  <li><a href="./getAllConsumer">Consumer details</a></li>
                  <li><a href="./billGeneration">Bill generation</a></li>
-                 <li><a href="./billHistory">Bill history</a></li>
-                 <li><a href="#">Monthly Revenue</a></li>
+                 <li><a href="./billHistory">Bill history(After Paid)</a></li>
+                 <li><a href="./monthOnMonthRevenue">Monthly Revenue</a></li>
                  <li><a href="./dispalyQueryResolvePage">View querie</a></li>
                  <li><a href="./removeAccount">Remove My Account</a></li>
                  <li class="active"><a href="./employeeLogout">LogOut</a></li>

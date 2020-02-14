@@ -28,14 +28,13 @@
 	<h3 style="color:red"><%= msg %></h3>
 	<%} %>
 
-     <% if(helpConsumerComplaintsBeanList != null ){ %>
+     <% if(helpConsumerComplaintsBeanList != null && ! helpConsumerComplaintsBeanList.isEmpty() ){ %>
 <table border ="1" style='width:70%; margin-left: 200px; margin-top: 200px'>
 	     <thead style='background-color: navy; color: white'>
 	         <tr style="height:35px">
 	         <th>SL.NO.</th>
 	         <th>Meter Number</th>
 	         <th>Region</th>
-	         <th>Query Date</th>
 	         <th>Querie</th>
 	         <th>Responces To Consumer</th>
 	         </tr>
@@ -43,20 +42,20 @@
 	     <% int i =1;for(HelpConsumerBean helpConsumerBean
 	    		 :helpConsumerComplaintsBeanList){ %>
 	    		 <form action="./employeeResponcePage">
-	    		 <input name="meterNumber" type="text" value="<%= helpConsumerBean.getHelpConsumerBeanPK().getMeterNumber()%>" hidden="true">
-	    		 <input name="queryDate" type="text" value="<%= helpConsumerBean.getHelpConsumerBeanPK().getQueryDate()%>" hidden="true">
-	      <tr style="height:35px">
+	    		 <input name="meterNumber" type="text" value="<%=helpConsumerBean.getHelpConsumerBeanPK().getMeterNumber()%>" hidden="true">
+	    		 <input name="query" type="text" value="<%=helpConsumerBean.getHelpConsumerBeanPK().getQuerie()%>" hidden="true">
+	      <tr style="height:35px; background-color: navy; color: white">
 	        <td><%= i %></td>
 	        <td><%= helpConsumerBean.getHelpConsumerBeanPK().getMeterNumber() %></td>
 	        <td><%=helpConsumerBean.getRegion() %></td>
-	        <td><%=helpConsumerBean.getHelpConsumerBeanPK().getQueryDate() %></td>
-	        <td><%=helpConsumerBean.getQuerie() %></td>
+	        <td><%=helpConsumerBean.getHelpConsumerBeanPK().getQuerie() %></td>
 	        <td><input type="submit" value="Click Here To Give Responce"> 
 	        </td>
 	        </tr>
 	        </form>
 	<% i++;} 
 	}else{%>
+	<h2 style="color: red">No Query To Display..</h2>
 	<%} %>
     
     <script src="/Jquery/jquery-3.4.1.js"></script>

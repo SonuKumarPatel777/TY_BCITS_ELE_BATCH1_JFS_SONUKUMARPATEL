@@ -2,7 +2,9 @@
 <%@page import="com.bcits.discomusecase.beans.ConsumersMasterBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
     <% EmployeeMasterBean empBean = (EmployeeMasterBean) session.getAttribute("loggedInEmp"); %>
+    <%int numberOfConsumer = (int)request.getAttribute("numberOfConsumer"); %>
      <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
     
     <spring:url var="css" value="/resources/css"/>
@@ -41,6 +43,11 @@
                     <td><strong>Region</strong></td>
                     <td>:&nbsp;</td>
                     <td><strong><%= empBean.getRegion() %></strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Number Of Consumer</strong></td>
+                    <td>:&nbsp;</td>
+                    <td><strong><%= numberOfConsumer %></strong></td>
                 </tr>
                  
             </table>

@@ -28,11 +28,18 @@ public class AdminMasterDAOHibernateImpl implements AdminMasterDAO{
 	@Override
 	public AdminMasterBean authentication(String userId, String password) {
 		EntityManager manager = emf.createEntityManager();
-		AdminMasterBean adminMasterBean = manager.find(AdminMasterBean.class, userId );
-		if (adminMasterBean != null && adminMasterBean.getPassword().equals(password)) {
-			return adminMasterBean;
-		} else {
+		try {
+			AdminMasterBean adminMasterBean = manager.find(AdminMasterBean.class, userId );
+			if (adminMasterBean != null && adminMasterBean.getPassword().equals(password)) {
+				return adminMasterBean;
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
+		}finally {
+			manager.close();
 		}
 		
 	}//end of authentication()
@@ -68,6 +75,8 @@ public class AdminMasterDAOHibernateImpl implements AdminMasterDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}finally {
+			manager.close();
 		}
 	}//end of getMonthlyConsumption()
 
@@ -75,8 +84,8 @@ public class AdminMasterDAOHibernateImpl implements AdminMasterDAO{
 	public int getMulitplayerAmount(String typeOfConsumer, int unitsRange) {
 		EntityManager manager = emf.createEntityManager();
 		Query query = manager.createQuery("Select mulitplayerAmount from TarrifMasterBean where "
-				+ "tarrifMasterPK.typeOfConsumer =:typeOfCon and tarrifMasterPK.unitsRange =:unitsRang");
-		
+				+ "tarrifMasterPK.typeOfConsumer =:typeOfCon and "
+				+ "tarrifMasterPK.unitsRange =:unitsRang");
 		try {
 			query.setParameter("typeOfCon", typeOfConsumer);
 			query.setParameter("unitsRang", unitsRange);
@@ -112,6 +121,8 @@ public class AdminMasterDAOHibernateImpl implements AdminMasterDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}finally {
+			manager.close();
 		}
 	}//end of tarrifChanged()
 	
@@ -129,6 +140,8 @@ public class AdminMasterDAOHibernateImpl implements AdminMasterDAO{
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}finally {
+			manager.close();
 		}
 	}//end of getAllEmployee()
 

@@ -21,9 +21,13 @@
 </head>
 
 <body>
-  <%String errMsg = (String)request.getAttribute("errMsg"); %>
+ <%String errMsg = (String)request.getAttribute("errMsg"); %>
   <% if(errMsg != null && !errMsg.isEmpty()){%>
- <h2 style="color:red; margin-left: 280px;'"><%= errMsg %></h2>
+ <h2 style="color:red; margin-left: 280px;"><%= errMsg %></h2>
+ <%}%>
+ <%String msg = (String)request.getAttribute("msg"); %>
+  <% if(msg != null && !msg.isEmpty()){%>
+ <h2 style="color:red; margin-left: 280px;"><%= msg %></h2>
  <%}%>
     <div class="container-fluid bg">
         <div class="row">
@@ -34,11 +38,13 @@
                     <img class="img rounded-circle " src="${images}/access-512.png">
                     <div>
                         <label>Employee ID</label>
-                        <input type="text" class="form-control" name="employeeId" placeholder=" Enter Employee ID">
+                        <input type="text" class="form-control" name="employeeId" id="empId" placeholder=" Enter Employee ID">
+                        <span id ="employeeId" style="color:red"></span>
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="password" class="form-control" name="password" placeholder=" Enter password">
+                        <input type="password" class="form-control" name="password" id="password" placeholder=" Enter password">
+                        <span id ="pass" style="color:red"></span>
                     </div>
                     <div>
                         <label><input type="checkbox" name="checkbox">Remember me</label>
@@ -57,9 +63,10 @@
         </div>
 
     </div>
-
-    <script src="/Jquery/jquery-3.4.1.js"></script>
-    <script src="/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+    
+     <script src="${js}/employeeLogin.js"></script>
+    <script src="${js}/jquery-3.4.1.js"></script>
+    <script src="${js}/bootstrap.min.js"></script>
 </body>
 
 </html>

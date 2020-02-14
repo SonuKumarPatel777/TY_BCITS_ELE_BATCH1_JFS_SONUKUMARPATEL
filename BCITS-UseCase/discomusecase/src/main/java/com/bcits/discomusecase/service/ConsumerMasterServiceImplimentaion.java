@@ -28,7 +28,10 @@ public class ConsumerMasterServiceImplimentaion implements ConsumerMasterService
 		if(!consumersMasterBean.getPassword().equals(cnfPassword)) {
 			return false;
 		}
-		return dao.registerConsumer(consumersMasterBean);
+		else if(validation.consumerValidation(consumersMasterBean)){
+			return false;
+		}
+		return  dao.registerConsumer(consumersMasterBean);
 	}//end of registerConsumer()
 	
 	
@@ -141,5 +144,18 @@ public class ConsumerMasterServiceImplimentaion implements ConsumerMasterService
 		}
 		return dao.removeConsumer(meterNumber);
 	}//end of removeConsumer()
+
+
+	@Override
+	public String getEmail(String meterNumber) {
+		return dao.getEmail(meterNumber);
+	}//end of getEmail()
+
+
+	@Override
+	public boolean clearPandingBill(String meterNumber, Double billAmount) {
+		return dao.clearPandingBill(meterNumber, billAmount);
+	}//end of clearPandingBill()
+
 
 }//end of class

@@ -35,7 +35,7 @@
 	     <% int i=1;
 	     for( MonthlyConsumptionBean monthlyConsumption
 	    		 :monthlyConsumptionList){ %>
-	      <tr style="height:35px">
+	      <tr style="height:35px; background-color: navy; color: white">
 	        <td><%= i %></td>
 	        <td><%= monthlyConsumption.getConsumptionPk().getMeterNumber() %></td>
 	        <td><%= monthlyConsumption.getPreviousReading() %></td>

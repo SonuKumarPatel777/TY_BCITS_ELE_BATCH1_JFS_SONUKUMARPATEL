@@ -55,7 +55,11 @@ public class EmployeeMasterController {
 			modelMap.addAttribute("errMsg", "Please Login First");
 			return "officerLogin";
 		} else {
-			return "EmployeeDetail";
+			EmployeeMasterBean employeeMasterBean = (EmployeeMasterBean) session.getAttribute("loggedInEmp");
+			String region = employeeMasterBean.getRegion();
+			int numberOfConsumer = employeeService.countConsumer(region);
+			modelMap.addAttribute("numberOfConsumer", numberOfConsumer);
+			return "employeeDetail";
 		}
 	}// end of dispalyConsumerDetails()
 
@@ -204,8 +208,8 @@ public class EmployeeMasterController {
 		}
 	}// end of dispalyBillGeneration()
 
-	@GetMapping("/currentBillPageGen")
-	public String displayCurrentBillPageGen(HttpSession session, ModelMap modelMap, String meterNumber) {
+	@GetMapping("/currentBillPageGenerationPage")
+	public String displayCurrentBillPageGeneration(HttpSession session, ModelMap modelMap, String meterNumber) {
 		EmployeeMasterBean empMasterInfo = (EmployeeMasterBean) session.getAttribute("loggedInEmp");
 		if (empMasterInfo != null) {
 			ConsumersMasterBean consumersMasterBean = consumerService.getConsumer(meterNumber);
@@ -225,10 +229,12 @@ public class EmployeeMasterController {
 	public String currentBillGeneration(HttpSession session, ModelMap modelMap, CurrentBillBean currentBillBean) {
 		EmployeeMasterBean empMasterInfo = (EmployeeMasterBean) session.getAttribute("loggedInEmp");
 		if (empMasterInfo != null) {
-			if (employeeService.currentBillGeneration(currentBillBean)) {
-				modelMap.addAttribute("msg", "Bill generated for  Meter Number  " + currentBillBean.getMeterNumber()
-				+ " SuccessFully... ");
-				if (employeeService.sendMail(currentBillBean.getMeterNumber())) {
+			if (employeeService.currentBillGeneration(currentBillBean,empMasterInfo.getRegion())) {
+				String meterNumber = currentBillBean.getMeterNumber();
+				modelMap.addAttribute("msg",
+						"Bill generated for  Meter Number  " + currentBillBean.getMeterNumber() + " SuccessFully... ");
+				String email = consumerService.getEmail(meterNumber);
+				if (employeeService.sendMail(currentBillBean.getMeterNumber(), email)) {
 					modelMap.addAttribute("msg", "Bill generated for  Meter Number  " + currentBillBean.getMeterNumber()
 							+ " SuccessFully... mail send");
 				} else {
@@ -268,17 +274,15 @@ public class EmployeeMasterController {
 	}// end of dispalyQueryResolve()
 
 	@GetMapping("/employeeResponcePage")
-	public String dispalyResponPage(HttpSession session, ModelMap modelMap, String meterNumber, Date queryDate) {
+	public String dispalyResponcePage(HttpSession session, ModelMap modelMap, String meterNumber, String query) {
 		if (session.isNew()) {
 			session.invalidate();
 			modelMap.addAttribute("errMsg", "Please Login First");
 			return "officerLogin";
 		} else {
-			String getSingleComplaint = employeeService.getSingleComplaint(meterNumber, queryDate);
-			if (getSingleComplaint != null) {
-				modelMap.addAttribute("getSingleComplaint", getSingleComplaint);
+			if (query != null) {
+				modelMap.addAttribute("getSingleComplaint", query);
 				modelMap.addAttribute("meterNumber", meterNumber);
-				modelMap.addAttribute("queryDate", queryDate);
 			} else {
 				modelMap.addAttribute("errMsg", "No Complaints");
 			}
@@ -287,14 +291,14 @@ public class EmployeeMasterController {
 	}// end of dispalyResponPage()
 
 	@PostMapping("/giveResponse")
-	public String giveResponceToConsumer(HttpSession session, String meterNumber, Date queryDate, ModelMap modelMap,
+	public String giveResponceToConsumer(HttpSession session, String meterNumber, ModelMap modelMap, String query,
 			String responce) {
 		if (session.isNew()) {
 			session.invalidate();
 			modelMap.addAttribute("errMsg", "Please Login First");
 			return "officerLogin";
 		} else {
-			if (employeeService.sendRespond(meterNumber, responce, queryDate)) {
+			if (employeeService.sendRespond(meterNumber, responce, query)) {
 				modelMap.addAttribute("msg", "Responce Send");
 			} else {
 				modelMap.addAttribute("errMsg", "Responce on hold...");
@@ -302,5 +306,25 @@ public class EmployeeMasterController {
 			return "employeeResponcePage";
 		}
 	}// end of giveResponceToConsumer()
+
+	@GetMapping("/monthOnMonthRevenue")
+	public String dispalyResponcePage(HttpSession session, ModelMap modelMap) {
+		if (session.isNew()) {
+			session.invalidate();
+			modelMap.addAttribute("errMsg", "Please Login First");
+			return "officerLogin";
+		} else {
+			EmployeeMasterBean empMasterInfo = (EmployeeMasterBean) session.getAttribute("loggedInEmp");
+			List<Object[]> notPaidAmount = employeeService.getAllNotPaidAmount(empMasterInfo.getRegion());
+			List<Object[]> paidAmount = employeeService.getAllPaidAmount(empMasterInfo.getRegion());
+			if (notPaidAmount != null && paidAmount != null) {
+				modelMap.addAttribute("notPaidAmount", notPaidAmount);
+				modelMap.addAttribute("paidAmount", paidAmount);
+			} else {
+				modelMap.addAttribute("errMsg", "Responce on hold...");
+			}
+			return "monthOnMonthRevenue";
+		}
+	}// end of dispalyResponPage()
 
 }// end of class

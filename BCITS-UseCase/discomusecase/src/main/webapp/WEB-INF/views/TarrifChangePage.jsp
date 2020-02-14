@@ -26,20 +26,19 @@
                     <td><label class="label">Type Of Consumer :</label></td></td>
                 </tr>
                 <tr>
-                    <td><input type="text" class="input" name="typeOfConsumer" placeholder="${typeOfConsumer}"></td>
+                    <td><input type="text" class="input" name="typeOfConsumer" value="${typeOfConsumer}" readonly></td>
                 </tr>
                 <tr>
                     <td><label class="label">Units Range:</label></td>
                 </tr>
                 <tr>
-                    <td><input type="tel" class="input" name="unitsRange" placeholder="${unitsRange}"></td>
+                    <td><input type="number" class="input" name="unitsRange" value="${unitsRange}" readonly></td>
                 </tr>
-
                 <tr>
                     <td><label class="label">Mulitplayer Amount:</label></td>
                 </tr>
                 <tr>
-                    <td><input type="tel" class="input" name="mulitplayerAmount"  placeholder="${mulitplayerAmount}" ></td>
+                    <td><input type="number" class="input" name="mulitplayerAmount"  value="${mulitplayerAmount}" ></td>
                 </tr>
                  <tr>
                     <td><input type="submit" value="Set">&nbsp;&nbsp;&nbsp;

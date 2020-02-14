@@ -14,9 +14,6 @@ public class HelpConsumerBean {
 	
 	@EmbeddedId
 	private HelpConsumerBeanPK helpConsumerBeanPK;
-	
-	@Column
-	private String querie;
 
 	@Column
 	private String responce;

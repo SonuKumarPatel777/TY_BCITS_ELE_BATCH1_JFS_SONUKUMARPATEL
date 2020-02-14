@@ -7,9 +7,9 @@
     <spring:url var="images" value="/resources/images"/>
     <jsp:include page="header.jsp"/>
 <!DOCTYPE html>
- <% String errMsg = (String)request.getAttribute("msg"); %>
+ <% String errMsg = (String)request.getAttribute("errMsg"); %>
  <% if(errMsg != null && !errMsg.isEmpty()){ %>
- <h2 style="color:green"><%= errMsg %></h2>
+ <h2 style="color:red; margin-left: 320px;"><%= errMsg %></h2>
  <%} %>
      
 <html lang="en">
@@ -33,12 +33,12 @@
                 <input type="email" name="email" id="" placeholder="Email Address">
                 <input type="tel" name="phoneNumber" id="" placeholder="Phone Number."><br>
                 <select name="region">
-                    <option selected >select Region</option>
+                    <option selected disabled>select Region</option>
                     <option>Bangalore North</option>
                     <option>Bangalore South</option>
                 </select> 
                 <select name="consumerType">
-                    <option selected >Type of consumer</option>
+                    <option selected disabled >Type of consumer</option>
                     <option>Residential</option>
                     <option>Commercial</option>
                     <option>Industries </option>

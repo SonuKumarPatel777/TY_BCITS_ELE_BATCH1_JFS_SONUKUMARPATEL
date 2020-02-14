@@ -23,7 +23,6 @@
 	     <thead style='background-color: navy; color: white'>
 	         <tr style="height:35px">
 	         <th>Sl.NO</th>
-	         <th>Query Date</th>
 	         <th>Query </th>
 	         <th>Responce</th>
 	         </tr>
@@ -31,11 +30,9 @@
 	     <% int i=1;
 	     for( HelpConsumerBean helpConsumerBean
 	    		 :helpConsumerBeanList){ %>
-	      <tr style="height:35px">
+	      <tr style="height:35px; background-color: navy; color: white">
 	        <td><%= i %></td>
-	        <td><% SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); %>
-              <%= formatter.format(helpConsumerBean.getHelpConsumerBeanPK().getQueryDate()) %></td>
-              <td><%= helpConsumerBean.getQuerie() %></td>
+	         <td><%= helpConsumerBean.getHelpConsumerBeanPK().getQuerie() %></td>
 	         <td><%= helpConsumerBean.getResponce() %></td>
 	        </tr>
 	<%i++;} 

@@ -29,7 +29,7 @@
 			</tr>
 			<tr>
 				<td><input type="text" class="input" name="meterNumber" id=""
-					value="<%= consumersMasterBean.getMeterNumber() %>"></td>
+					value="<%= consumersMasterBean.getMeterNumber() %> " readonly></td>
 			</tr>
 
 			<tr>
@@ -37,7 +37,7 @@
 			</tr>
 			<tr>
 				<td><input type="text" class="input" name="previousReading" 
-					value="<%= previousReading %>"></td>
+					value="<%= previousReading %>" readonly></td>
 			</tr>
 			<tr>
 				<td><label class="label">Final-Reading</label></td>

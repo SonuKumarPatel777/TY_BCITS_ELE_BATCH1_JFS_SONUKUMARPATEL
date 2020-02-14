@@ -16,7 +16,7 @@
 <title>AdminDetails</title>
 </head>
 <body>
-    <table style="font-size: 20px;margin-left: 250px; background-color: white;">
+    <table style="font-size: 20px;margin-left: 290px; background-color: white;">
                  <tr>
                     <td><strong>Admin Details:-</strong></td>
                     <td></td>

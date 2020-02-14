@@ -12,7 +12,7 @@ import lombok.Data;
 public class BillHistoryBean {
 	
 	@EmbeddedId
-	private BillHistoryPK biHistoryPK;
+	private BillHistoryPK billHistoryPK;
 	@Column
 	private Double amount;
 	@Column

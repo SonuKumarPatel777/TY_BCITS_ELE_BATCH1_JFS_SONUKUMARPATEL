@@ -33,16 +33,18 @@
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12"></div>
             <div class="col-md-4 col-sm-4 col-xs-12">
-                <form action="./consumerLogin" id="login"  method="post">
+                <form action="./consumerLogin" id="formData" onsubmit="validation(); return false" method="post">
                     <h3>Consumer Login</h3>
                     <img class="img rounded-circle " src="${images}/login.png">
                     <div>
                         <label>User ID</label>
-                        <input type="text" class="form-control" name="meterNumber" id="meterNum" placeholder=" Enter Meter Number/RR Number" >
+                        <input type="text" class="form-control" name="meterNumber" id="meterNum" placeholder=" Enter Meter Number" >
+                        <span id="meter" style="color:red;"></span>
                     </div>
                     <div>
                         <label>Password</label>
                         <input type="password" class="form-control" name="password" id ="password" placeholder=" Enter Password">
+                        <span id ="pass" style="color:red"></span>
                     </div>
                     <div>
                         <label><input type="checkbox" name="checkbox">Remember me</label>
@@ -66,7 +68,6 @@
 
     </div>
 
-    <script src="${js}/consumerLogin.js"></script>
     <script src="${js}/jquery-3.4.1.js"></script>
     <script src="${js}/bootstrap.min.js"></script>
 </body>

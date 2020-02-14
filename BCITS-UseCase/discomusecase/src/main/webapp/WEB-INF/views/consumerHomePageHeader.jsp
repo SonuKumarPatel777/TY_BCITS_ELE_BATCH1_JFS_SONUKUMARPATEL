@@ -25,6 +25,7 @@
                  <li><a href="./monthlyConsumption">Monthly Consumption</a></li>
                  <li><a href="./displayBillHistorysPage">Bill History</a></li>
                  <li><a href="./displayCurrentBillPage">Current Bill</a></li>
+                 <li><a href="./displayBillPanding">Bill Panding</a></li>
                  <li><a href="./displayConsumerHelpPage">Help</a></li>
                  <li><a href="./employeeResponce">Responce</a></li>
                  <li><a href="./removeMyAccount">Remove my Account</a></li>

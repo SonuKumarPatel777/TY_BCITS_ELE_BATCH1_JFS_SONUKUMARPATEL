@@ -1,21 +1,18 @@
 function validation() {
-    var meterNum = document.getElementById("meterNum").value;
+    var  empId = document.getElementById("empId").value;
     var password = document.getElementById("password").value;
 
 
-    var meterNumValid = false;
+    var employeeIdValid = false;
     var passwordValid  = false;
 
-    var meterNumFormat = /[!@#$%&*()_+=|<>?{}\\[\\]~a-z]/;
+     
 
-    if(meterNum == ""){
-        document.getElementById("meter").innerHTML= "Please fill the Meter/RR Number";
-        return false;
-    }else if(meterNumFormat.test(meterNum)){
-        document.getElementById("meter").innerHTML= "Please Enter Valid  Meter/RR Number";
+    if(empId == ""){
+        document.getElementById("employeeId").innerHTML= "Please fill the Employee ID First*";
         return false;
     }else{
-        document.getElementById("meter").style.display= 'none';
+        document.getElementById("employeeId").style.display= 'none';
         var meterNumValid = true;
     }
 
@@ -31,7 +28,7 @@ function validation() {
      
     }
 
-    if(meterNumValid && passwordValid){
+    if(employeeIdValid && passwordValid){
         document.body.appendChild(form);
         form.submit();
         return true;

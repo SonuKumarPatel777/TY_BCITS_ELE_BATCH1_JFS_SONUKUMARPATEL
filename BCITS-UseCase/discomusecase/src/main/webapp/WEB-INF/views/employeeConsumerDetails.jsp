@@ -40,7 +40,7 @@
 	    		 :consumersMasterList){ %>
 	    <form action="./removeConsumer">
 	    		 <input name="meterNumber" type="text" value="<%= consumersMasterBean.getMeterNumber() %>" hidden="true">
-	      <tr style="height:35px">
+	      <tr style="height:35px; background-color: navy; color: white">
 	        <td><%= i %></td>
 	        <td><%= consumersMasterBean.getMeterNumber() %></td>
 	        <td><%= consumersMasterBean.getName() %></td>

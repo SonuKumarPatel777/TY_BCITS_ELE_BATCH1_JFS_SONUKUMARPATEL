@@ -15,7 +15,7 @@ import com.bcits.discomusecase.beans.CurrentBillBean;
 
 public class MyMailGenerator {
 	
-	public boolean sendMail(CurrentBillBean currentBill) {
+	public boolean sendMail(CurrentBillBean currentBill,String email) {
 
 		System.out.println("Sending Mail...");
 
@@ -41,7 +41,7 @@ public class MyMailGenerator {
 
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("sonu.patel112113@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 			message.setSubject("Testing Gmail TLS");
 			message.setText("Dear Consumer," + "\n\n This  Month you have Consumed   " + currentBill.getConsumption()
 					+ "\n\n So the total Bill will be rupees  " + currentBill.getBillAmount()

@@ -32,11 +32,11 @@
 	     <% int i=1;
 	     for( BillHistoryBean billHistoryBean
 	    		 :billHistoryBeansList){ %>
-	      <tr style="height:35px">
+	      <tr style="height:35px; background-color: navy; color: white">
 	        <td><%= i %></td>
 	        <td><%= billHistoryBean.getAmount() %></td>
 	        <td><% SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); %>
-              <%= formatter.format(billHistoryBean.getBiHistoryPK().getPaymentDate()) %></td>
+              <%= formatter.format(billHistoryBean.getBillHistoryPK().getPaymentDate()) %></td>
 	        <td><%= billHistoryBean.getStatus() %></td>
 	         
 	        </tr>

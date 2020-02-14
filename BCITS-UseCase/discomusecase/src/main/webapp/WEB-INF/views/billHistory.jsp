@@ -33,7 +33,7 @@
 	    		 :consumersMasterList){ %>
 	    <form action="./viewBillHistory">
 	    		 <input name="meterNumber" type="text" value="<%= consumersMasterBean.getMeterNumber() %>" hidden="true">
-	      <tr style="height:35px">
+	      <tr style="height:35px; background-color: navy; color: white">
 	        <td><%= consumersMasterBean.getMeterNumber() %></td>
 	        <td><%= consumersMasterBean.getName() %></td>
 	        <td><%= consumersMasterBean.getEmail() %></td>

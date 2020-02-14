@@ -14,15 +14,19 @@ public interface EmployeeMasterService {
 	
 	public List<ConsumersMasterBean> getAllConsumer(String region );
 	
-	public boolean currentBillGeneration(CurrentBillBean currentBill);
+	public int countConsumer(String region);
+	
+	public boolean currentBillGeneration(CurrentBillBean currentBill,String region);
 	
 	public List<HelpConsumerBean> getAllComplaints(String region);
 	
-	public String getSingleComplaint(String meterNumber, Date queryDate);
-	
 	public boolean removeEmployee(int employeeId);
 	
-	public boolean sendRespond(String meterNumber,String response ,Date date);
+	public boolean sendRespond(String meterNumber,String response ,String query);
 	
-	public boolean sendMail(String meterNumber);
+	public boolean sendMail(String meterNumber, String email);
+	
+    public List<Object[]> getAllPaidAmount(String region);
+	
+	public List<Object[]> getAllNotPaidAmount(String region);
 }//end of service

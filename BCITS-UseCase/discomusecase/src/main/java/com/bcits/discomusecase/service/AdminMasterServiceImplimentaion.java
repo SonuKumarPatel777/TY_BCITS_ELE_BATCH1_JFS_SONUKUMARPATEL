@@ -10,12 +10,15 @@ import com.bcits.discomusecase.beans.ConsumersMasterBean;
 import com.bcits.discomusecase.beans.EmployeeMasterBean;
 import com.bcits.discomusecase.beans.TarrifMasterBean;
 import com.bcits.discomusecase.dao.AdminMasterDAO;
+import com.bcits.discomusecase.validation.FormValidation;
 
 @Service
 public class AdminMasterServiceImplimentaion implements AdminMasterService{
 	
 	@Autowired
 	 private AdminMasterDAO dao;
+	
+	FormValidation validation = new FormValidation();
 
 	@Override
 	public AdminMasterBean authentication(String userId, String password) {
@@ -25,6 +28,9 @@ public class AdminMasterServiceImplimentaion implements AdminMasterService{
 	@Override
 	public boolean registerEmployee(EmployeeMasterBean employeeMasterBean, String cnfPassword) {
 		if(!employeeMasterBean.getPassword().equals(cnfPassword)) {
+			return false;
+		}
+		else if(!validation.employeeValidation(employeeMasterBean)) {
 			return false;
 		}
 		return dao.registerEmployee(employeeMasterBean);

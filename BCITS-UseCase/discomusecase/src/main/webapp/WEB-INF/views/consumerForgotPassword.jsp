@@ -21,14 +21,6 @@
 </head>
 
 <body>
-  <%String errMsg = (String)request.getAttribute("errMsg"); %>
-  <% if(errMsg != null && !errMsg.isEmpty()){%>
- <h2 style="color:red"><%= errMsg %></h2>
- <%}%>
- <%String msg = (String)request.getAttribute("msg"); %>
-  <% if(msg != null && !msg.isEmpty()){%>
- <h2 style="color:red"><%= msg %></h2>
- <%}%>
     <div class="container-fluid bg">
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-12"></div>

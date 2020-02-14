@@ -15,7 +15,7 @@ public class HelpConsumerBeanPK implements Serializable{
 	@Column(name="meter_number")
 	private String meterNumber;
     
-	@Column(name="query_date")
-    private Date queryDate;
+	@Column
+	private String querie;
 
 }//end of class

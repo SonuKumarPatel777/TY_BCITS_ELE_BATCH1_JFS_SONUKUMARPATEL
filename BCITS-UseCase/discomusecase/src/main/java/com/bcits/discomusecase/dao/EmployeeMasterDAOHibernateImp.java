@@ -1,5 +1,6 @@
 package com.bcits.discomusecase.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,15 +55,33 @@ public class EmployeeMasterDAOHibernateImp implements EmployeeMasterDAO {
 		Query query = manager.createQuery(jpql);
 		query.setParameter("regionName", region);
 		List<ConsumersMasterBean> consumersMasterBean = (List<ConsumersMasterBean>) query.getResultList();
-		if (consumersMasterBean != null) {
+		if (consumersMasterBean != null && !consumersMasterBean.isEmpty()) {
 			return consumersMasterBean;
 		}
 		return null;
 
 	}// end of getAllConsumer()
+	
+	@Override
+	public int countConsumer(String region) {
+		EntityManager manager =emf.createEntityManager();
+		try {
+			String jpql ="select count(*) from ConsumersMasterBean where region= :region ";
+			Query query =manager.createQuery(jpql);
+			query.setParameter("region", region);
+			long count = (long) query.getSingleResult();
+		    int numberOfCount = (int)count;
+		    return numberOfCount;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		
+	}//end of countConsumer()
 
 	@Override
-	public boolean currentBillGeneration(CurrentBillBean currentBill) {
+	public boolean currentBillGeneration(CurrentBillBean currentBill,String region) {
 		int units = currentBill.getCurrentReading() - currentBill.getPreviousReading();
 		EntityManager manager = emf.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
@@ -79,6 +98,7 @@ public class EmployeeMasterDAOHibernateImp implements EmployeeMasterDAO {
 			monthlyConsumption.setBillAmount(amount);
 			monthlyConsumption.setStatus("Not Paid");
 			monthlyConsumption.setConsumption(units);
+			monthlyConsumption.setRegion(region);
 			monthlyConsumption.setPreviousReading(currentBill.getPreviousReading());
 			monthlyConsumption.setCurrentReading(currentBill.getCurrentReading());
 			mothlyPk.setDate(new Date());
@@ -97,7 +117,7 @@ public class EmployeeMasterDAOHibernateImp implements EmployeeMasterDAO {
 			return false;
 		}
 
-	}// end of addCurrentBillToMonthlyConsumption()
+	}// end of currentBillGeneration()
 
 	@Override
 	public List<HelpConsumerBean> getAllComplaints(String region) {
@@ -115,22 +135,6 @@ public class EmployeeMasterDAOHibernateImp implements EmployeeMasterDAO {
 	}// end of getAllComplaints()
 
 	@Override
-	public String getSingleComplaint(String meterNumber, Date queryDate){
-		EntityManager manager = emf.createEntityManager();
-		String jpql= "from HelpConsumerBean where helpConsumerBeanPK.meterNumber=:meterNum and helpConsumerBeanPK.queryDate=:queDate ";
-		Query query = manager.createQuery(jpql);
-		query.setParameter("meterNum", meterNumber);
-		query.setParameter("queDate", queryDate);
-		try {
-			String  getSingleComplaint = (String)query.getSingleResult();
-			return getSingleComplaint;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@Override
 	public boolean removeEmployee(int employeeId) {
 		EntityManager manager = emf.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
@@ -146,32 +150,32 @@ public class EmployeeMasterDAOHibernateImp implements EmployeeMasterDAO {
 		}
 	}//end of removeEmployee()
 	@Override
-	public boolean sendRespond(String meterNumber,String response ,Date date) {
+	public boolean sendRespond(String meterNumber,String response,String query) {
 		EntityManager manager = emf.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
+		String jpql=" from HelpConsumerBean where helpConsumerBeanPK.meterNumber= :mNum "
+				+ "and helpConsumerBeanPK.querie= :que  ";
 			try {
 				transaction.begin();
-				String jpql=" from HelpConsumerBean where meterNumber= :mNum and DATE(date)=:date ";
-				Query query =manager.createQuery(jpql);
-				query.setParameter("mNum", meterNumber);
-				query.setParameter("date", date);
-				HelpConsumerBean supportBean = (HelpConsumerBean) query.getSingleResult();
+				Query jpqlQuery =manager.createQuery(jpql);
+				jpqlQuery.setParameter("mNum", meterNumber);
+				jpqlQuery.setParameter("que", query);
+				HelpConsumerBean supportBean = (HelpConsumerBean) jpqlQuery.getSingleResult();
 				supportBean.setResponce(response);
 				transaction.commit();
 				return true;
 			}catch (Exception e) {
 				e.printStackTrace();
-				
 				return false;
 			}
 	}//end of sendRespond()
 
 	@Override
-	public boolean sendMail(String meterNumber) {
+	public boolean sendMail(String meterNumber,String email) {
 	EntityManager manager = emf.createEntityManager();
 	try {
 		CurrentBillBean billBean = manager.find(CurrentBillBean.class, meterNumber);
-		 mail.sendMail(billBean);
+		 mail.sendMail(billBean,email);
 		 return true;
 		 
 	} catch (Exception e) {
@@ -181,4 +185,42 @@ public class EmployeeMasterDAOHibernateImp implements EmployeeMasterDAO {
 		 
 	}//end of sendMail()
 
+	@Override
+	public List<Object[]> getAllPaidAmount(String region) {
+		EntityManager manager = emf.createEntityManager();
+		try {
+			String jpql =" select sum(billAmount), DATE_FORMAT(consumptionPk.date,'%Y-%m') "
+					+ "from MonthlyConsumptionBean"
+					+ " where region=:region and status='paid' GROUP BY MONTH(consumptionPk.date) ";
+			Query query = manager.createQuery(jpql);
+			 
+			query.setParameter("region", region);
+			List<Object[]> paidBillList = query.getResultList(); 
+			Object[]  notPaidBill= paidBillList.get(0);
+			return paidBillList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}//end of getAllPaidAmount()
+
+	@Override
+	public List<Object[]> getAllNotPaidAmount(String region) {
+		EntityManager manager = emf.createEntityManager();
+		try {
+			String jpql =" select sum(billAmount), DATE_FORMAT(consumptionPk.date,'%Y-%m') "
+					+ "from MonthlyConsumptionBean"
+					+ " where region=:region and status='Not Paid' GROUP BY MONTH(consumptionPk.date) ";
+			Query query = manager.createQuery(jpql);
+			 
+			query.setParameter("region", region);
+			List<Object[]> notPaidBillList = query.getResultList(); 
+			return notPaidBillList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}//end of getAllNotPaidAmount()
+
+	 
 }// end of class

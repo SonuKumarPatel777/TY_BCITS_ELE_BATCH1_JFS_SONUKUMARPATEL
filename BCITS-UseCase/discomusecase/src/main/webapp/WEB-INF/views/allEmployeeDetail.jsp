@@ -32,7 +32,7 @@
 	    		 :employeeMasterList){ %>
 	    <form action="./removeEmployee">
 	    		 <input name="employeeId" type="text" value="<%= employeeMasterBean.getEmployeeId() %>" hidden="true">
-	      <tr style="height:35px">
+	      <tr style="height:35px; background-color: navy; color: white">
 	        <td><%= i%></td>
 	        <td><%= employeeMasterBean.getName() %></td>
 	        <td><%= employeeMasterBean.getEmployeeId() %></td>

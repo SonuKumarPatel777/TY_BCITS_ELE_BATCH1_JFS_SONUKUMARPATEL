@@ -35,7 +35,12 @@ public interface ConsumersMasterDAO {
 	
 	public boolean reSetPassword(ConsumersMasterBean consumersMasterBean);
 	
+	public  String getEmail(String meterNumber);
+	
 	public List<HelpConsumerBean> getAllResponse(String meterNumber);
 	
 	public boolean removeConsumer(String meterNumber);
+	
+	public boolean clearPandingBill(String meterNumber, Double billAmount);
+	
 }//End of interface

@@ -54,8 +54,8 @@ public class ConsumerMasterController {
 			modelMap.addAttribute("msg", "SuccessfulIy register");
 			return "consumerlogin";
 		} else {
-			modelMap.addAttribute("errMsg", "Register failed...!!! Meter Number is Already used");
-			return "consumerFailedPage";
+			modelMap.addAttribute("errMsg", "Registation failed...!!!");
+			return "consumerRegister";
 		}
 	}// end of addConsumerDetails()
 
@@ -144,7 +144,72 @@ public class ConsumerMasterController {
 			} 
 		
 	}// end of dispalyConsumerMonthlyConsumption()
-
+	
+	@GetMapping("/displayBillPanding")
+	public String dispalyPandingBillForConsumption(HttpSession session, ModelMap modelMap) {
+		ConsumersMasterBean consumersMasterBean = (ConsumersMasterBean) session.getAttribute("loggedInCons");
+			if (consumersMasterBean != null) {
+				String meterNumber = consumersMasterBean.getMeterNumber();
+				List<MonthlyConsumptionBean> monthlyConsumptionBean = service.getMonthlyConsumption(meterNumber);
+				if(monthlyConsumptionBean != null) {
+					modelMap.addAttribute("monthlyConsumption", monthlyConsumptionBean);
+					return "consumerBillPanding";
+				}else {
+					modelMap.addAttribute("errMsg", "No  Monthly Consumption Bill For You  !!");
+					return "consumerFailedPage";
+				}			
+			}else {
+				modelMap.addAttribute("errMsg", "Please Login First..");
+				return "consumerlogin";
+			} 
+		
+	}// end of dispalyPandingBillForConsumption()
+	
+	
+	@GetMapping("/paymentPage")
+	public String dispalyPandingBillPaymentPage(HttpSession session, ModelMap modelMap,
+			Double billAmount) {
+		ConsumersMasterBean consumersMasterBeann = (ConsumersMasterBean) session.getAttribute("loggedInCons");
+		if (session.isNew()) {
+			session.invalidate();
+			modelMap.addAttribute("errMsg", "Please Login First");
+			return "consumerlogin";
+		} else {
+			if (consumersMasterBeann != null) {
+				Double  pandingBillAmount= billAmount;
+				modelMap.addAttribute("pandingBillAmount", pandingBillAmount);
+				return "consumerBillpandingPayment";
+			} else {
+				modelMap.addAttribute("errMsg", "Unable to Pay");
+				return "consumerFailedPage";
+			}
+		}
+	}// end of dispalyPandingBillPaymentPage()
+	
+	@PostMapping("/clearPandingBill")
+	public String clearPandingBill(HttpSession session, ModelMap modelMap,Double billAmount) {
+		
+		if (session.isNew()) {
+			session.invalidate();
+			modelMap.addAttribute("errMsg", "Please Login First");
+			return "consumerlogin";
+		} else {
+			ConsumersMasterBean consumersMasterBeann = (ConsumersMasterBean) session.getAttribute("loggedInCons");
+			if (consumersMasterBeann != null) {
+				String meterNumber = consumersMasterBeann.getMeterNumber();
+				if (service.clearPandingBill(meterNumber, billAmount)) {
+					return "consumerPaymentsuccessfullpage";
+				} else {
+					modelMap.addAttribute("errMsg", "Unable to Pay");
+					return "consumerPaymentPage";
+				}
+			} else {
+				modelMap.addAttribute("errMsg", "Unable to Pay");
+				return "consumerFailedPage";
+			}
+		}
+	}// end of clearPandingBill()
+	
 	@GetMapping("/consumerPaymentPage")
 	public String dispalyPaymentPage(HttpSession session, ModelMap modelMap) {
 		ConsumersMasterBean consumersMasterBeann = (ConsumersMasterBean) session.getAttribute("loggedInCons");
@@ -190,6 +255,7 @@ public class ConsumerMasterController {
 			}
 		}
 	}// end of dispalyPaymentPage()
+	
 
 	@GetMapping("/displayBillHistorysPage")
 	public String displayBillHistoryPage(HttpSession session, ModelMap modelMap) {
@@ -273,7 +339,7 @@ public class ConsumerMasterController {
 			}else{
 				modelMap.addAttribute("errMsg", "Unable To reset The Password!!");
 			}
-			return "consumerForgotPassword";
+			return "officerLogin";
 		}else{
 			modelMap.addAttribute("errMsg", "Invalid Meter Number Or Email");
 			return "consumerForgotPassword";
